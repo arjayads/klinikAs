@@ -1,6 +1,6 @@
 <?php
 
-namespace ManageMe;
+namespace ManageMe\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -21,14 +21,14 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'User';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['isActive', 'email', 'password'];
 
     /**
      * The attributes excluded from the model's JSON form.
