@@ -11,9 +11,18 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', ['middleware' => 'auth', function () {
     return view('welcome');
+}]);
+
+
+// Authentication routes...
+Route::group(['prefix' => 'auth'], function () {
+    Route::get('login', 'Auth\AuthController@getLogin');
+    Route::post('login', 'Auth\AuthController@postLogin');
+    Route::get('logout', 'Auth\AuthController@getLogout');
 });
+
 
 Route::group(['prefix' => 'user'], function () {
     Route::get('list', ['uses' => 'UserController@all']);

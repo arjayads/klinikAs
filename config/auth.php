@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => ManageMe\User::class,
+    'model' => ManageMe\Models\User::class,
 
     /*
     |--------------------------------------------------------------------------
