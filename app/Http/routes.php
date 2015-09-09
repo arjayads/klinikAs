@@ -28,3 +28,9 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('list', ['uses' => 'UserController@all']);
 
 });
+
+Route::group(['prefix' => 'patient'], function () {
+    Route::get('/', ['uses' => 'PatientController@index']);
+
+});
+
