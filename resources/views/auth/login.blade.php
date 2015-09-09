@@ -5,35 +5,7 @@
 <head>
     <title>Login</title>
     <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <style>
-        form label {
-            padding-top: 10px;
-        }
-
-        .middle-box {
-            height: 400px;
-            width: 400px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-top: -250px;
-            margin-left: -200px;
-            z-index: 100;
-        }
-
-        .loginscreen.middle-box {
-            width: 300px;
-            margin-left: -150px;
-        }
-
-        .full-width {
-            width: 100% !important;
-        }
-
-        .hoz-space {
-            height: 10px;
-        }
-    </style>
+    <link href="/css/app/clinic.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="middle-box loginscreen">
