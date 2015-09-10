@@ -13,7 +13,7 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
 
     var paginationOptions = {
         pageNumber: 1,
-        pageSize: 25,
+        pageSize: 15,
         sort: null,
         sortCol: 'lastName'
     };
@@ -25,9 +25,6 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
     $scope.gridOptions1 = {
         paginationPageSizes: [15, 30, 45],
         paginationPageSize: 15,
-        enableRowSelection: true,
-        multiSelect: false,
-        enableColumnResize: true,
         columnDefs: [
             {
                 field: 'lastName',
@@ -68,17 +65,18 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
         var url ='patient/all';
 
         if (paginationOptions.sortCol != null) {
-            url += '/' + paginationOptions.sortCol;
+            url += '?sortCol=' + paginationOptions.sortCol;
 
             if (paginationOptions.sort != null) {
-                url += '/' + paginationOptions.sort;
+                url += '&direction=' + paginationOptions.sort;
             }
         }
 
         $http.get(url).success(function(data) {
-            $scope.gridOptions1.totalItems = 100;
-            var firstRow = (paginationOptions.pageNumber - 1) * paginationOptions.pageSize;
-            $scope.gridOptions1.data = data.slice(firstRow, firstRow + paginationOptions.pageSize);
+            //$scope.gridOptions1.totalItems = 101;
+            //var firstRow = (paginationOptions.pageNumber - 1) * paginationOptions.pageSize;
+            //$scope.gridOptions1.data = data.slice(firstRow, firstRow + paginationOptions.pageSize);
+            $scope.gridOptions1.data = data
         }).error(function() {
             toastr.error('Something went wrong!');
         });

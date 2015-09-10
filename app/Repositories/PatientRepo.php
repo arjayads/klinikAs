@@ -2,11 +2,11 @@
 
 namespace ManageMe\Repositories;
 
-use ManageMe\Models\Patient;
+use Illuminate\Support\Facades\DB;
 
 class PatientRepo
 {
-    function findAll($orderBy = 'lastName', $direction = 'ASC') {
-        return Patient::orderBy($orderBy, $direction)->get();
+    function findAll($sortCol = 'lastName', $direction = 'ASC', $offset = 0, $limit = 4294967295) {
+        return DB::table('Patient')->orderBy($sortCol, $direction)->skip($offset)->take($limit)->get();
     }
 }
