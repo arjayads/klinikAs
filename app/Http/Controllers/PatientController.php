@@ -3,11 +3,20 @@
 namespace ManageMe\Http\Controllers;
 
 use ManageMe\Http\Requests;
+use ManageMe\Repositories\PatientRepo;
 
 class PatientController extends Controller
 {
+    function __construct(PatientRepo $patientRepo) {
+        $this->patientRepo = $patientRepo;
+    }
+
     function index() {
         return view('patient.index');
+    }
+
+    function all() {
+        return $this->patientRepo->findAll();
     }
 }
 

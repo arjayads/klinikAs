@@ -11,14 +11,18 @@ class PatientTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('Patient')->insert(
-            [
-                'firstName'    => 'John',
-                'lastName' => 'Doe',
-                'birthDate' => '1987-01-02',
-                'sex' => 'Male',
-                'maritalStatus' => 'Single'
-            ]
-        );
+        $r = range(1, 100);
+        foreach($r as $v) {
+            DB::table('Patient')->insert(
+                [
+                    'firstName'    => 'John' . $v,
+                    'lastName' => 'Doe' . $v,
+                    'birthDate' => '1987-01-02',
+                    'sex' => $v % 2 == 0 ? 'Male' : 'Female',
+                    'maritalStatus' => $v % 2 == 0 ? 'Single' : 'Married'
+                ]
+            );
+        }
+
     }
 }

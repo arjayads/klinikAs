@@ -1,7 +1,7 @@
 <!-- resources/views/layouts/master.blade.php -->
 
 <!DOCTYPE html>
-<html lang="en">>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,8 @@
     <link href="/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="/css/datepicker/datepicker3.css" rel="stylesheet" type="text/css">
     <link href="/css/app/clinic.css" rel="stylesheet" type="text/css">
+
+    @yield('css')
 
     <script type="text/javascript" src="/js/angular/angular.min.js"></script>
 </head>
@@ -31,6 +33,8 @@
 <script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="/js/angular/ui-bootstrap-0.11.0.min.js"></script>
+<script type="text/javascript" src="/js/angular/angular-touch.min.js"></script>
+<script type="text/javascript" src="/js/angular/angular-animate.min.js"></script>
 
 <script type="text/javascript" src="/js/datepicker/datepicker.js"></script>
 <script type="text/javascript" src="/js/toastr/toastr.min.js"></script>

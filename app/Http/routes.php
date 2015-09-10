@@ -31,6 +31,7 @@ Route::group(['prefix' => 'user'], function () {
 
 Route::group(['prefix' => 'patient'], function () {
     Route::get('/', ['uses' => 'PatientController@index']);
+    Route::get('all', ['uses' => 'PatientController@all']);
 
 });
 

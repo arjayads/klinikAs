@@ -21,7 +21,7 @@ class CreatePatientTable extends Migration
             $table->string('telephone')->nullable();
             $table->string('mobileNumber')->nullable();
             $table->string('email')->nullable();
-            $table->enum('sex', ['Male', 'Famale']);
+            $table->enum('sex', ['Male', 'Female']);
             $table->enum('maritalStatus', ['Married', 'Single']);
             $table->text('address')->nullable();
             $table->text('remark')->nullable();
