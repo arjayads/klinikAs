@@ -18,9 +18,16 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
         sortCol: 'lastName'
     };
 
+    $scope.dateToMills = function(input) {
+        return new Date(input).getTime();
+    }
+
     $scope.gridOptions1 = {
         paginationPageSizes: [15, 30, 45],
         paginationPageSize: 15,
+        enableRowSelection: true,
+        multiSelect: false,
+        enableColumnResize: true,
         columnDefs: [
             {
                 field: 'lastName',
@@ -30,10 +37,12 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
             },
             { field: 'firstName', enableSorting: true, enableHiding: false },
             { field: 'middleName', enableSorting: true, enableHiding: false },
-            { field: 'birthDate', enableSorting: true, enableHiding: false },
-            //{ field: 'Age', enableSorting: true, enableHiding: false },
+            { field: 'birthDate', displayName: 'Date of Birth', cellFilter: 'date:\'mediumDate\'', enableSorting: true, enableHiding: false },
             { field: 'sex', enableSorting: true, enableHiding: false },
-            { field: 'updatedAt', enableSorting: true, enableHiding: false }
+            {
+                field: 'updatedAt',  displayName: 'Last updated', enableSorting: true, enableHiding: false,
+                cellTemplate: "<span>{{grid.appScope.dateToMills(row.entity.updatedAt) | date: 'medium'}}</span>"
+            }
         ],
         onRegisterApi: function(gridApi) {
             $scope.gridApi = gridApi;
@@ -57,7 +66,7 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
 
     var getPage = function() {
         var url ='patient/all';
-        
+
         if (paginationOptions.sortCol != null) {
             url += '/' + paginationOptions.sortCol;
 
