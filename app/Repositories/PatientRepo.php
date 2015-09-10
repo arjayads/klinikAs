@@ -6,7 +6,7 @@ use ManageMe\Models\Patient;
 
 class PatientRepo
 {
-    function findAll() {
-        return Patient::all();
+    function findAll($orderBy = 'lastName', $direction = 'ASC') {
+        return Patient::orderBy($orderBy, $direction)->get();
     }
 }

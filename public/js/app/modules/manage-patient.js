@@ -5,11 +5,18 @@ managePatientApp.config(['$interpolateProvider', function($interpolateProvider) 
     $interpolateProvider.endSymbol('%>');
 }]);
 
-managePatientApp.controller('mainCtrl', ['$scope', '$http', function ($scope, $http) {
+managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', function ($scope, $http, uiGridConstants) {
 
     $scope.buildCellUrl = function(id) {
         return '/patient/' + id + '/detail';
     }
+
+    var paginationOptions = {
+        pageNumber: 1,
+        pageSize: 25,
+        sort: null,
+        sortCol: 'lastName'
+    };
 
     $scope.gridOptions1 = {
         paginationPageSizes: [15, 30, 45],
@@ -28,15 +35,47 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', function ($scope, $h
             { field: 'sex', enableSorting: true, enableHiding: false },
             { field: 'updatedAt', enableSorting: true, enableHiding: false }
         ],
-        onRegisterApi: function( gridApi ) {
-            $scope.grid1Api = gridApi;
+        onRegisterApi: function(gridApi) {
+            $scope.gridApi = gridApi;
+            $scope.gridApi.core.on.sortChanged($scope, function(grid, sortColumns) {
+                if (sortColumns.length == 0) {
+                    paginationOptions.sort = null;
+                    paginationOptions.sortCol = 'lastName';
+                } else {
+                    paginationOptions.sort = sortColumns[0].sort.direction;
+                    paginationOptions.sortCol = sortColumns[0].field;
+                }
+                getPage();
+            });
+            gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
+                paginationOptions.pageNumber = newPage;
+                paginationOptions.pageSize = pageSize;
+                getPage();
+            });
         }
     };
 
-    $http.get('patient/all').success(function(data) {
-        $scope.gridOptions1.data = data;
-    }).error(function() {
-        toastr.error('Something went wrong!');
-    });
+    var getPage = function() {
+        var url ='patient/all';
+        
+        if (paginationOptions.sortCol != null) {
+            url += '/' + paginationOptions.sortCol;
+
+            if (paginationOptions.sort != null) {
+                url += '/' + paginationOptions.sort;
+            }
+        }
+
+        $http.get(url).success(function(data) {
+            $scope.gridOptions1.totalItems = 100;
+            var firstRow = (paginationOptions.pageNumber - 1) * paginationOptions.pageSize;
+            $scope.gridOptions1.data = data.slice(firstRow, firstRow + paginationOptions.pageSize);
+        }).error(function() {
+            toastr.error('Something went wrong!');
+        });
+
+    };
+
+    getPage();
 
 }]);

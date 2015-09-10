@@ -15,8 +15,8 @@ class PatientController extends Controller
         return view('patient.index');
     }
 
-    function all() {
-        return $this->patientRepo->findAll();
+    function all($sortCol = 'lastName', $direction = 'ASC') {
+        return $this->patientRepo->findAll($sortCol, $direction);
     }
 }
 
