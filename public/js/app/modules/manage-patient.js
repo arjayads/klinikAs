@@ -14,7 +14,7 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
     var paginationOptions = {
         pageNumber: 1,
         pageSize: 15,
-        sort: null,
+        sort: 'asc',
         sortCol: 'lastName'
     };
 
@@ -25,6 +25,7 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
     $scope.gridOptions1 = {
         paginationPageSizes: [15, 30, 45],
         paginationPageSize: 15,
+        useExternalPagination: true,
         columnDefs: [
             {
                 field: 'lastName',
@@ -45,7 +46,7 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
             $scope.gridApi = gridApi;
             $scope.gridApi.core.on.sortChanged($scope, function(grid, sortColumns) {
                 if (sortColumns.length == 0) {
-                    paginationOptions.sort = null;
+                    paginationOptions.sort = 'asc';
                     paginationOptions.sortCol = 'lastName';
                 } else {
                     paginationOptions.sort = sortColumns[0].sort.direction;
@@ -64,19 +65,25 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
     var getPage = function() {
         var url ='patient/all';
 
-        if (paginationOptions.sortCol != null) {
-            url += '?sortCol=' + paginationOptions.sortCol;
+        var query = [];
+        query.push('sortCol=' + paginationOptions.sortCol);
+        query.push('direction=' + paginationOptions.sort);
 
-            if (paginationOptions.sort != null) {
-                url += '&direction=' + paginationOptions.sort;
-            }
+        var limit = paginationOptions.pageSize * paginationOptions.pageNumber;
+        query.push('limit=' + limit);
+        query.push('offset=' + (limit - paginationOptions.pageSize));
+
+        var params = "";
+        for(var x = 0; x < query.length; x++) {
+            params += query[x] + "&";
         }
+        url += "?" + params;
 
         $http.get(url).success(function(data) {
-            //$scope.gridOptions1.totalItems = 101;
-            //var firstRow = (paginationOptions.pageNumber - 1) * paginationOptions.pageSize;
-            //$scope.gridOptions1.data = data.slice(firstRow, firstRow + paginationOptions.pageSize);
-            $scope.gridOptions1.data = data
+            try {
+                $scope.gridOptions1.totalItems = data.count;
+                $scope.gridOptions1.data = data.rows;
+            }catch (e) {}
         }).error(function() {
             toastr.error('Something went wrong!');
         });

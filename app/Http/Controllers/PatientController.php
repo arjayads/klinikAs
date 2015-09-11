@@ -4,6 +4,7 @@ namespace ManageMe\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
 use ManageMe\Http\Requests;
+use ManageMe\Models\Patient;
 use ManageMe\Repositories\PatientRepo;
 
 class PatientController extends Controller
@@ -22,19 +23,23 @@ class PatientController extends Controller
         $offset = Input::get('offset');
         $limit = Input::get('limit');
 
-        if ($sortCol && $direction && $offset && $limit) {
-            return $this->patientRepo->findAll($sortCol, $direction, $offset, $limit);
+        $data['count'] = Patient::count();
+        if ($data['count'] > 0) {
+            if ($sortCol && $direction && intval($offset) >= 0 && intval($limit) > 0) {
+                $data['rows'] = $this->patientRepo->findAll($sortCol, $direction, $offset, $limit);
+            } else
+            if ($sortCol && $direction && intval($offset) >= 0) {
+                $data['rows'] = $this->patientRepo->findAll($sortCol, $direction, $offset);
+            } else
+            if ($sortCol && $direction) {
+                $data['rows'] = $this->patientRepo->findAll($sortCol, $direction);
+            } else
+            if ($sortCol) {
+                $data['rows'] = $this->patientRepo->findAll($sortCol);
+            } else
+                $data['rows'] = $this->patientRepo->findAll();
         }
-        if ($sortCol && $direction && $offset) {
-            return $this->patientRepo->findAll($sortCol, $direction, $offset);
-        }
-        if ($sortCol && $direction) {
-            return $this->patientRepo->findAll($sortCol, $direction);
-        }
-        if ($sortCol) {
-            return $this->patientRepo->findAll($sortCol);
-        }
-        return $this->patientRepo->findAll();
+        return $data;
     }
 }
 
