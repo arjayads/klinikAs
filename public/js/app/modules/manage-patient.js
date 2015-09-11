@@ -31,7 +31,7 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
                 field: 'lastName',
                 enableSorting: true,
                 enableHiding: false,
-                cellTemplate: '<a target="_blank" href="{{grid.appScope.buildCellUrl(row.entity.id)}}" class="ui-grid-cell-contents">{{row.entity.lastName}}</a>'
+                cellTemplate: '<a href="{{grid.appScope.buildCellUrl(row.entity.id)}}" class="ui-grid-cell-contents">{{row.entity.lastName}}</a>'
             },
             { field: 'firstName', enableSorting: true, enableHiding: false },
             { field: 'middleName', enableSorting: true, enableHiding: false },
@@ -91,5 +91,10 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
     };
 
     getPage();
+
+}]);
+
+managePatientApp.controller('detailCtrl', ['$scope', '$http', function ($scope, $http) {
+    $scope.header = "Patient Details";
 
 }]);
