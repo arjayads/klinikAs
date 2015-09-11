@@ -33,7 +33,12 @@ Route::group(['prefix' => 'patient'], function () {
     Route::get('/', ['uses' => 'PatientController@index']);
     Route::get('all', ['uses' => 'PatientController@all']);
     Route::get('{id}/detail', ['uses' => 'PatientController@detail']);
+    Route::get('{id}', ['uses' => 'PatientController@findOne']);
     Route::get('notFound', ['uses' => 'PatientController@notFound']);
+
+    Route::post('save', ['uses' => 'PatientController@save']);
+    Route::post('update', ['uses' => 'PatientController@update']);
+    Route::get('{id}/edit', ['uses' => 'PatientController@edit']);
 
 });
 

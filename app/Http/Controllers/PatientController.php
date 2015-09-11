@@ -51,8 +51,21 @@ class PatientController extends Controller
         }
     }
 
+    function findOne($id) {
+        return Patient::find($id);
+    }
+
     function notFound() {
         return view('patient.notFound');
+    }
+
+    function edit($id) {
+        $patient = Patient::find($id);
+        if ($patient) {
+            return view('patient.edit', ['patient' => $patient]);
+        } else {
+            return redirect()->action('PatientController@notFound');
+        }
     }
 }
 

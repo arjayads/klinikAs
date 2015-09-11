@@ -25,6 +25,7 @@
 </div>
 
 <script type="text/javascript" src="/js/jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery/jquery-ui-1.10.4.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="/js/angular/ui-bootstrap-0.11.0.min.js"></script>

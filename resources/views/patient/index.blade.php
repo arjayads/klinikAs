@@ -15,9 +15,8 @@
 
 @section('content')
     <div  ng-app="managePatient">
-        <h2>Manage Patients</h2>
-
         <div ng-controller="mainCtrl">
+            <h2>Manage Patients</h2>
             <div ui-grid="gridOptions1" ui-grid-pagination class="patient-list"></div>
         </div>
     </div>

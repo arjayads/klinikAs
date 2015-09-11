@@ -5,8 +5,16 @@
 @section('content')
     <div ng-app="managePatient">
         <div ng-controller="detailCtrl">
-            <h2 ng-cloak><% header %></h2>
+            <div class="row">
+                <div class="col-md-8">
+                    <h2>Patient detail</h2>
+                </div>
+                <div class="col-md-4">
+                    <a href="/patient/{{$patient->id}}/edit" class="btn btn-primary  pull-right" style="margin-top: 20px;">Edit</a>
+                </div>
+            </div>
 
+            <div class="hoz-space"></div>
             <div class="row detail">
                 <div class="col-md-6">
                     <div class="row">

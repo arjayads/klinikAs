@@ -95,6 +95,26 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
 }]);
 
 managePatientApp.controller('detailCtrl', ['$scope', '$http', function ($scope, $http) {
-    $scope.header = "Patient Details";
+}]);
 
+managePatientApp.controller('editCtrl', ['$scope', '$http', function ($scope, $http) {
+    $scope.caption = "Update patient";
+    $scope.patient = {};
+
+    $http.get('/patient/1').success(function(data) {
+        $scope.patient = data;
+        $scope.patient.birthDate = $.datepicker.formatDate('mm/dd/yy', new Date(data.birthDate));
+    }).error(function() {
+        toastr.error('Something went wrong!');
+    });
+
+    $scope.processForm = function() {
+        if ($scope.submitting) return; // prevent multiple submission
+        $scope.caption ='Saving...';
+        $scope.submitting = true;
+        $scope.errors = {};
+
+        console.log($scope.patient.birthDate);
+        return;
+    }
 }]);
