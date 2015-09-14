@@ -52,7 +52,11 @@ class PatientController extends Controller
     }
 
     function findOne($id) {
-        return Patient::find($id);
+        $p = Patient::find($id);
+        if ($p) {
+            return $p;
+        }
+        return ['error' => 'true', 'message' => 'Patient not found!'];
     }
 
     function notFound() {
@@ -62,10 +66,19 @@ class PatientController extends Controller
     function edit($id) {
         $patient = Patient::find($id);
         if ($patient) {
-            return view('patient.edit', ['patient' => $patient]);
+            return view('patient.edit', ['patientId' => $patient->id]);
         } else {
             return redirect()->action('PatientController@notFound');
         }
+    }
+
+    function add() {
+            return view('patient.edit', ['patientId' => null]);
+    }
+
+    function save() {
+        print_r(Input::all());
+        die;
     }
 }
 

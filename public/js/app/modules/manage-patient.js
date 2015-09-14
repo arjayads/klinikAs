@@ -98,15 +98,25 @@ managePatientApp.controller('detailCtrl', ['$scope', '$http', function ($scope, 
 }]);
 
 managePatientApp.controller('editCtrl', ['$scope', '$http', function ($scope, $http) {
-    $scope.caption = "Update patient";
-    $scope.patient = {};
 
-    $http.get('/patient/1').success(function(data) {
-        $scope.patient = data;
-        $scope.patient.birthDate = $.datepicker.formatDate('mm/dd/yy', new Date(data.birthDate));
-    }).error(function() {
-        toastr.error('Something went wrong!');
+    $scope.patient = {};
+    $scope.patientId = undefined;
+
+    $scope.$watch('patientId', function(newValue, oldValue) {
+        if ((patientId = newValue) !== undefined) {
+            $scope.caption = "Update patient";
+
+            $http.get('/patient/' + patientId).success(function(data) {
+                $scope.patient = data;
+                $scope.patient.birthDate = $.datepicker.formatDate('mm/dd/yy', new Date(data.birthDate));
+            }).error(function() {
+                toastr.error('Something went wrong!');
+            });
+        } else {
+            $scope.caption = "Add patient";
+        }
     });
+
 
     $scope.processForm = function() {
         if ($scope.submitting) return; // prevent multiple submission
@@ -114,7 +124,21 @@ managePatientApp.controller('editCtrl', ['$scope', '$http', function ($scope, $h
         $scope.submitting = true;
         $scope.errors = {};
 
-        console.log($scope.patient.birthDate);
-        return;
+        $scope.patient.birthDate =  $('#dob').val();
+
+        $http.post('/patient/save', $scope.patient).success(function(data) {
+            if (data.success) {
+                window.location = '/patient/' + $scope.patientId + '/detail';
+                toastr.success('Patient successfully saved');
+            } else {
+                $.each(data.messages, function(index, value) {
+                    $scope.errors[index] = value;
+                });
+            }
+        }).error(function() {
+            toastr.error('Something went wrong!');
+            $scope.submitting = false;
+            $scope.save = "Save";
+        });
     }
 }]);

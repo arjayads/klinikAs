@@ -12,11 +12,12 @@
             <div class="hoz-space"></div>
 
             <form ng-submit="processForm()">
+                <input type="hidden" ng-cloak ng-model="patientId" ng-init="patientId = {{$patientId ?: 'undefined'}}">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-3">
-                                <label for="first_name">First Name</label>
+                                <label for="first_name">First Name </label>
                             </div>
                             <div class="col-md-9">
                                 <div class="input-group">
@@ -181,7 +182,7 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <fieldset ng-disabled="submitting">
-                            <button ng-mousedown="submit = true" type="submit" class="btn btn-primary"><span class="fa fa-save"></span> <%caption%></button>
+                            <button ng-cloak ng-mousedown="submit = true" type="submit" class="btn btn-primary"><span class="fa fa-save"></span> <%caption%></button>
                         </fieldset>
                     </div>
                 </div>
