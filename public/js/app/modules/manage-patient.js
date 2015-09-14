@@ -126,14 +126,19 @@ managePatientApp.controller('editCtrl', ['$scope', '$http', function ($scope, $h
 
         $scope.patient.birthDate =  $('#dob').val();
 
-        $http.post('/patient/save', $scope.patient).success(function(data) {
-            if (data.success) {
-                window.location = '/patient/' + $scope.patientId + '/detail';
+        $http.post('/patient/update', $scope.patient).success(function(data) {
+            if (!data.error) {
                 toastr.success('Patient successfully saved');
+                $scope.caption ='Saved';
+                setTimeout(function(){
+                    window.location = '/patient/' + $scope.patientId + '/detail';
+                }, 2000);
             } else {
                 $.each(data.messages, function(index, value) {
                     $scope.errors[index] = value;
                 });
+                $scope.submitting = false;
+                $scope.save = "Save";
             }
         }).error(function() {
             toastr.error('Something went wrong!');

@@ -36,10 +36,10 @@ Route::group(['prefix' => 'patient'], function () {
     Route::get('notFound', ['uses' => 'PatientController@notFound']);
     Route::get('add', ['uses' => 'PatientController@add']);
     Route::get('{id}', ['uses' => 'PatientController@findOne']);
-
-    Route::post('save', ['uses' => 'PatientController@save']);
-    Route::post('update', ['uses' => 'PatientController@update']);
     Route::get('{id}/edit', ['uses' => 'PatientController@edit']);
+
+    Route::post('create', ['uses' => 'PatientController@create']);
+    Route::post('update', ['uses' => 'PatientController@update']);
 
 });
 

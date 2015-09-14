@@ -2,6 +2,7 @@
 
 namespace ManageMe\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
 use ManageMe\Http\Requests;
 use ManageMe\Models\Patient;
@@ -76,9 +77,26 @@ class PatientController extends Controller
             return view('patient.edit', ['patientId' => null]);
     }
 
-    function save() {
-        print_r(Input::all());
-        die;
+    function update() {
+
+        $params = Input::all();
+
+        $patient = Patient::find($params['id']);
+        if ($patient) {
+            foreach ($params as $key => $value) {
+                $patient->$key = $value;
+            }
+            $patient->birthDate = Carbon::createFromFormat('m/d/Y', $params['birthDate']);
+            $result = $patient->save();
+            if($result) {
+                return ['error' => false, 'message' => 'Patient successfully saved.'];
+            } else {
+                return ['error' => true, 'message' => 'Something went wrong.'];
+            }
+        } else {
+            return ['error' => true, 'message' => 'Patient does not exist.'];
+        }
+
     }
 }
 
