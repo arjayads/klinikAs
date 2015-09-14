@@ -140,14 +140,18 @@ managePatientApp.controller('editCtrl', ['$scope', '$http', function ($scope, $h
                 $scope.submitting = false;
                 $scope.caption = prevCap;
             }
-        }).error(function(data) {
-            try {
-                for (var property in data) {
-                    if (data.hasOwnProperty(property)) {
-                        $scope.errors[property] = data[property];
+        }).error(function(data, a) {
+            if (a == '422') {
+                try {
+                    for (var property in data) {
+                        if (data.hasOwnProperty(property)) {
+                            $scope.errors[property] = data[property];
+                        }
                     }
+                } catch (e) {
+                    console.log(e);
                 }
-            } catch(e) {console.log(e);}
+            }
             toastr.error('Something went wrong!');
             $scope.submitting = false;
             $scope.caption = prevCap;
