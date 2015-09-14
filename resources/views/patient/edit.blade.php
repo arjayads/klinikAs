@@ -26,6 +26,7 @@
                                            name="firstName" class="form-control"
                                            ng-model="patient.firstName">
                                 </div>
+                                <form-error err_field="errors.firstName"></form-error>
                             </div>
                         </div>
 
@@ -57,6 +58,7 @@
                                            name="lastName" class="form-control"
                                            ng-model="patient.lastName">
                                 </div>
+                                <form-error err_field="errors.lastName"></form-error>
                             </div>
                         </div>
 
@@ -72,6 +74,7 @@
                                            type="text"  placeholder="Enter date of birth"
                                            class="input-sm form-control" id="dob">
                                 </div>
+                                <form-error err_field="errors.birthDate"></form-error>
                             </div>
                         </div>
 
@@ -83,12 +86,13 @@
                             <div class="col-md-9">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-magnet"></i></span>
-                                    <select id="sex" required="" class="form-control" ng-model="patient.sex">
+                                    <select required="" id="sex" class="form-control" ng-model="patient.sex">
                                         <option value="">Select sex</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                     </select>
                                 </div>
+                                <form-error err_field="errors.sex"></form-error>
                             </div>
                         </div>
 
@@ -100,12 +104,13 @@
                             <div class="col-md-9">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-magnet"></i></span>
-                                    <select id="mstatus" required="" class="form-control" ng-model="patient.maritalStatus">
+                                    <select required="" id="mstatus" class="form-control" ng-model="patient.maritalStatus">
                                         <option value="">Select status</option>
                                         <option value="Married">Married</option>
                                         <option value="Single">Single</option>
                                     </select>
                                 </div>
+                                <form-error err_field="errors.maritalStatus"></form-error>
                             </div>
                         </div>
                     </div>
@@ -162,6 +167,7 @@
                                            name="email" class="form-control"
                                            ng-model="patient.email">
                                 </div>
+                                <form-error err_field="errors.email"></form-error>
                             </div>
                         </div>
 
@@ -193,6 +199,7 @@
 
 
 @section('javascript')
+    <script type="text/javascript" src="/js/app/directives/form-error.js"></script>
     <script type="text/javascript" src="/js/app/modules/manage-patient.js"></script>
     <script type="text/javascript" src="/js/ui-grid/ui-grid.min.js"></script>
 

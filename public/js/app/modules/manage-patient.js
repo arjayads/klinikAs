@@ -1,4 +1,4 @@
-var managePatientApp = angular.module('managePatient', ['ngTouch', 'ui.grid', 'ui.grid.pagination']);
+var managePatientApp = angular.module('managePatient', ['ngTouch', 'ui.grid', 'ui.grid.pagination', 'dirFormError']);
 
 managePatientApp.config(['$interpolateProvider', function($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
@@ -121,6 +121,7 @@ managePatientApp.controller('editCtrl', ['$scope', '$http', function ($scope, $h
 
 
     $scope.processForm = function() {
+        var prevCap =  $scope.caption;
         if ($scope.submitting) return; // prevent multiple submission
         $scope.caption ='Saving...';
         $scope.submitting = true;
@@ -136,16 +137,20 @@ managePatientApp.controller('editCtrl', ['$scope', '$http', function ($scope, $h
                     window.location = '/patient/' + data.entityId + '/detail';
                 }, 2000);
             } else {
-                $.each(data.messages, function(index, value) {
-                    $scope.errors[index] = value;
-                });
                 $scope.submitting = false;
-                $scope.save = "Save";
+                $scope.caption = prevCap;
             }
-        }).error(function() {
+        }).error(function(data) {
+            try {
+                for (var property in data) {
+                    if (data.hasOwnProperty(property)) {
+                        $scope.errors[property] = data[property];
+                    }
+                }
+            } catch(e) {console.log(e);}
             toastr.error('Something went wrong!');
             $scope.submitting = false;
-            $scope.save = "Save";
+            $scope.caption = prevCap;
         });
     }
 }]);

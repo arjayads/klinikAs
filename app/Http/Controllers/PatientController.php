@@ -77,9 +77,9 @@ class PatientController extends Controller
             return view('patient.edit', ['patientId' => null]);
     }
 
-    function update() {
+    function update(Requests\PatientRequest $request) {
 
-        $params = Input::all();
+        $params = $request->all();
 
         $patient = Patient::find($params['id']);
         if ($patient) {
@@ -98,9 +98,9 @@ class PatientController extends Controller
         }
     }
 
-    function create() {
+    function create(Requests\PatientRequest $request) {
 
-        $params = Input::all();
+        $params = $request->all();
 
         if ($params) {
             $patient = new Patient();
