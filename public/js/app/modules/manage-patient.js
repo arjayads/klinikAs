@@ -101,9 +101,11 @@ managePatientApp.controller('editCtrl', ['$scope', '$http', function ($scope, $h
 
     $scope.patient = {};
     $scope.patientId = undefined;
+    $scope.url = '/patient/create';
 
     $scope.$watch('patientId', function(newValue, oldValue) {
         if ((patientId = newValue) !== undefined) {
+            $scope.url = '/patient/update';
             $scope.caption = "Update patient";
 
             $http.get('/patient/' + patientId).success(function(data) {
@@ -126,12 +128,12 @@ managePatientApp.controller('editCtrl', ['$scope', '$http', function ($scope, $h
 
         $scope.patient.birthDate =  $('#dob').val();
 
-        $http.post('/patient/update', $scope.patient).success(function(data) {
+        $http.post($scope.url, $scope.patient).success(function(data) {
             if (!data.error) {
                 toastr.success('Patient successfully saved');
                 $scope.caption ='Saved';
                 setTimeout(function(){
-                    window.location = '/patient/' + $scope.patientId + '/detail';
+                    window.location = '/patient/' + data.entityId + '/detail';
                 }, 2000);
             } else {
                 $.each(data.messages, function(index, value) {
