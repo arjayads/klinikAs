@@ -23,6 +23,5 @@ class PatientTableSeeder extends Seeder
                 ]
             );
         }
-
     }
 }

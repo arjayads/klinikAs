@@ -44,3 +44,8 @@ Route::group(['prefix' => 'patient'], function () {
 
 });
 
+
+Route::group(['prefix' => 'medicine'], function () {
+    Route::get('/', ['uses' => 'MedicineController@index']);
+});
+

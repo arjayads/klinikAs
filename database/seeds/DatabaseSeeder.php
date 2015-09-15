@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
 
          $this->call(UserTableSeeder::class);
          $this->call(PatientTableSeeder::class);
+         $this->call(MedicineTableSeeder::class);
 
         Model::reguard();
     }
