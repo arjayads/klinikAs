@@ -23,9 +23,12 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
     };
 
     $scope.$watch('query', function(searchText, oldValue) {
-        query = [];
         if (searchText !== undefined && $.trim(searchText).length >= 3) {
             q = 'q='+ encodeURIComponent(searchText);
+            getPage();
+        } else
+        if (searchText === undefined || $.trim(searchText).length == 0) {
+            q = '';
             getPage();
         }
     });
@@ -104,9 +107,6 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
             toastr.error('Something went wrong!');
         });
     };
-
-    getPage();
-
 }]);
 
 managePatientApp.controller('detailCtrl', ['$scope', '$http', function ($scope, $http) {
