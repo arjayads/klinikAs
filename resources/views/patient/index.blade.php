@@ -16,7 +16,14 @@
 @section('content')
     <div  ng-app="managePatient">
         <div ng-controller="mainCtrl">
-            <h2>Manage Patients</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Manage Patients</h2>
+                </div>
+                <div class="col-md-6">
+                    <a href="/patient/add" class="btn btn-primary  pull-right" style="margin-top: 20px;">Add</a>
+                </div>
+            </div>
             <div ui-grid="gridOptions1" ui-grid-pagination class="patient-list"></div>
         </div>
     </div>
