@@ -5,7 +5,7 @@ managePatientApp.config(['$interpolateProvider', function($interpolateProvider) 
     $interpolateProvider.endSymbol('%>');
 }]);
 
-managePatientApp.controller('mainCtrl', ['$scope', '$http', function ($scope, $http) {
+managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', function ($scope, $http, uiGridConstants) {
 
 
     var q = ""; // query string
