@@ -18,29 +18,20 @@ class PatientController extends Controller
         return view('patient.index');
     }
 
-    function all() {
+    function find() {
         $sortCol = Input::get('sortCol');
         $direction = Input::get('direction');
         $offset = Input::get('offset');
         $limit = Input::get('limit');
+        $query = Input::get('q');
 
-        $data['count'] = Patient::count();
-        if ($data['count'] > 0) {
-            if ($sortCol && $direction && intval($offset) >= 0 && intval($limit) > 0) {
-                $data['rows'] = $this->patientRepo->findAll($sortCol, $direction, $offset, $limit);
-            } else
-            if ($sortCol && $direction && intval($offset) >= 0) {
-                $data['rows'] = $this->patientRepo->findAll($sortCol, $direction, $offset);
-            } else
-            if ($sortCol && $direction) {
-                $data['rows'] = $this->patientRepo->findAll($sortCol, $direction);
-            } else
-            if ($sortCol) {
-                $data['rows'] = $this->patientRepo->findAll($sortCol);
-            } else
-                $data['rows'] = $this->patientRepo->findAll();
-        }
-        return $data;
+        return $this->patientRepo->find(
+                $sortCol ?: 'lastName',
+                in_array(strtoupper($direction), ['ASC', 'DESC']) ? $direction : 'ASC',
+                $offset ?: 0,
+                $limit ?: 4294967295,
+                $query ?: ''
+            );
     }
 
     function detail($id) {
@@ -117,6 +108,22 @@ class PatientController extends Controller
         } else {
             return ['error' => true, 'message' => 'Invalid data'];
         }
+    }
+
+    function countFind() {
+        $sortCol = Input::get('sortCol');
+        $direction = Input::get('direction');
+        $offset = Input::get('offset');
+        $limit = Input::get('limit');
+        $query = Input::get('q');
+
+        return $this->patientRepo->countFind(
+            $sortCol ?: 'lastName',
+            in_array(strtoupper($direction), ['ASC', 'DESC']) ? $direction : 'ASC',
+            $offset ?: 0,
+            $limit ?: 4294967295,
+            $query ?: ''
+        );
     }
 }
 

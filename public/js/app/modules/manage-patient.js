@@ -7,6 +7,10 @@ managePatientApp.config(['$interpolateProvider', function($interpolateProvider) 
 
 managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', function ($scope, $http, uiGridConstants) {
 
+
+    var q = ""; // query string
+    $scope.query = "";
+
     $scope.buildCellUrl = function(id) {
         return '/patient/' + id + '/detail';
     }
@@ -17,6 +21,14 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
         sort: 'asc',
         sortCol: 'lastName'
     };
+
+    $scope.$watch('query', function(searchText, oldValue) {
+        query = [];
+        if (searchText !== undefined && $.trim(searchText).length >= 3) {
+            q = 'q='+ encodeURIComponent(searchText);
+            getPage();
+        }
+    });
 
     $scope.dateToMills = function(input) {
         return new Date(input).getTime();
@@ -63,31 +75,34 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
     };
 
     var getPage = function() {
-        var url ='patient/all';
-
         var query = [];
+
+        var searchUrl ='patient/find';
+        var countSearchUrl ='patient/countFind';
         query.push('sortCol=' + paginationOptions.sortCol);
         query.push('direction=' + paginationOptions.sort);
 
         var limit = paginationOptions.pageSize * paginationOptions.pageNumber;
         query.push('limit=' + limit);
         query.push('offset=' + (limit - paginationOptions.pageSize));
+        query.push(q);
 
         var params = "";
         for(var x = 0; x < query.length; x++) {
             params += query[x] + "&";
         }
-        url += "?" + params;
+        searchUrl += "?" + params;
+        countSearchUrl += "?" + params;
 
-        $http.get(url).success(function(data) {
-            try {
-                $scope.gridOptions1.totalItems = data.count;
-                $scope.gridOptions1.data = data.rows;
-            }catch (e) {}
+        $http.get(countSearchUrl).success(function(data) {
+            $scope.gridOptions1.totalItems = data;
+        });
+
+        $http.get(searchUrl).success(function(data) {
+            $scope.gridOptions1.data = data;
         }).error(function() {
             toastr.error('Something went wrong!');
         });
-
     };
 
     getPage();
