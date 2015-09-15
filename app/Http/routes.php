@@ -47,7 +47,7 @@ Route::group(['prefix' => 'patient'], function () {
 
 Route::group(['prefix' => 'medicine'], function () {
     Route::get('/', ['uses' => 'MedicineController@index']);
-    /*
+
     Route::get('countFind', ['uses' => 'MedicineController@countFind']);
     Route::get('find', ['uses' => 'MedicineController@find']);
     Route::get('{id}/detail', ['uses' => 'MedicineController@detail']);
@@ -58,6 +58,6 @@ Route::group(['prefix' => 'medicine'], function () {
 
     Route::post('create', ['uses' => 'MedicineController@create']);
     Route::post('update', ['uses' => 'MedicineController@update']);
-    */
+//
 });
 

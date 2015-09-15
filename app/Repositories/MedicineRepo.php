@@ -3,6 +3,8 @@
 namespace ManageMe\Repositories;
 
 
+use Illuminate\Support\Facades\DB;
+
 class MedicineRepo {
 
     function find($sortCol = 'name', $direction = 'ASC', $offset = 0, $limit = 4294967295, $query = '') {

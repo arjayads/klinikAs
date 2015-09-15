@@ -1,25 +1,25 @@
-var managePatientApp = angular.module('managePatient', ['ngTouch', 'ui.grid', 'ui.grid.pagination', 'dirFormError']);
+var manageMedicineApp = angular.module('manageMedicine', ['ngTouch', 'ui.grid', 'ui.grid.pagination', 'dirFormError']);
 
-managePatientApp.config(['$interpolateProvider', function($interpolateProvider) {
+manageMedicineApp.config(['$interpolateProvider', function($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
 }]);
 
-managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', function ($scope, $http, uiGridConstants) {
+manageMedicineApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', function ($scope, $http, uiGridConstants) {
 
 
     var q = ""; // query string
     $scope.query = "";
 
     $scope.buildCellUrl = function(id) {
-        return '/patient/' + id + '/detail';
+        return '/medicine/' + id + '/detail';
     }
 
     var paginationOptions = {
         pageNumber: 1,
         pageSize: 15,
         sort: 'asc',
-        sortCol: 'lastName'
+        sortCol: 'name'
     };
 
     $scope.$watch('query', function(searchText, oldValue) {
@@ -43,15 +43,11 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
         useExternalPagination: true,
         columnDefs: [
             {
-                field: 'lastName',
+                field: 'Name',
                 enableSorting: true,
                 enableHiding: false,
-                cellTemplate: '<a href="{{grid.appScope.buildCellUrl(row.entity.id)}}" class="ui-grid-cell-contents">{{row.entity.lastName}}</a>'
+                cellTemplate: '<a href="{{grid.appScope.buildCellUrl(row.entity.id)}}" class="ui-grid-cell-contents">{{row.entity.name}}</a>'
             },
-            { field: 'firstName', enableSorting: true, enableHiding: false },
-            { field: 'middleName', enableSorting: true, enableHiding: false },
-            { field: 'birthDate', displayName: 'Date of Birth', cellFilter: 'date:\'mediumDate\'', enableSorting: true, enableHiding: false },
-            { field: 'sex', enableSorting: true, enableHiding: false },
             {
                 field: 'updatedAt',  displayName: 'Last updated', enableSorting: true, enableHiding: false,
                 cellTemplate: "<span>{{grid.appScope.dateToMills(row.entity.updatedAt) | date: 'medium'}}</span>"
@@ -62,7 +58,7 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
             $scope.gridApi.core.on.sortChanged($scope, function(grid, sortColumns) {
                 if (sortColumns.length == 0) {
                     paginationOptions.sort = 'asc';
-                    paginationOptions.sortCol = 'lastName';
+                    paginationOptions.sortCol = 'name';
                 } else {
                     paginationOptions.sort = sortColumns[0].sort.direction;
                     paginationOptions.sortCol = sortColumns[0].field;
@@ -80,8 +76,8 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
     var getPage = function() {
         var query = [];
 
-        var searchUrl ='patient/find';
-        var countSearchUrl ='patient/countFind';
+        var searchUrl ='medicine/find';
+        var countSearchUrl ='medicine/countFind';
         query.push('sortCol=' + paginationOptions.sortCol);
         query.push('direction=' + paginationOptions.sort);
 
@@ -109,10 +105,10 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', f
     };
 }]);
 
-managePatientApp.controller('detailCtrl', ['$scope', '$http', function ($scope, $http) {
+manageMedicineApp.controller('detailCtrl', ['$scope', '$http', function ($scope, $http) {
 }]);
 
-managePatientApp.controller('editCtrl', ['$scope', '$http', function ($scope, $http) {
+manageMedicineApp.controller('editCtrl', ['$scope', '$http', function ($scope, $http) {
 
     $scope.patient = {};
     $scope.patientId = undefined;
