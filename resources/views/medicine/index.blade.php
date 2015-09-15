@@ -16,7 +16,7 @@
 @section('content')
     <div  ng-app="manageMedicine">
         <div ng-controller="mainCtrl">
-            <h2>Manage Patients</h2>
+            <h2>Manage Medicines</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="input-group">

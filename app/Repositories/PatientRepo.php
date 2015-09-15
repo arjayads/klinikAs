@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class PatientRepo
 {
-    function find($sortCol = 'lastName', $direction = 'ASC', $offset = 0, $limit = 4294967295, $query = '') {
+    function find($sortCol = 'lastName', $direction = 'ASC', $offset = 0, $limit = 15, $query = '') {
         $q = DB::table('Patient');
 
         if (strlen($query) > 0) {
@@ -14,21 +14,18 @@ class PatientRepo
                 ->orWhere('lastName', 'LIKE', ('%'.$query.'%'));
         }
         return $q->orderBy($sortCol, $direction)
-                ->skip($offset)
                 ->take($limit)
+                ->skip($offset)
                 ->get();
     }
 
-    function countFind($sortCol = 'lastName', $direction = 'ASC', $offset = 0, $limit = 4294967295, $query = '') {
+    function countFind($query = '') {
         $q = DB::table('Patient');
 
         if (strlen($query) > 0) {
             $q->where('firstName', 'LIKE', ('%'.$query.'%'))
                 ->orWhere('lastName', 'LIKE', ('%'.$query.'%'));
         }
-        return $q->orderBy($sortCol, $direction)
-            ->skip($offset)
-            ->take($limit)
-            ->count();
+        return $q->count();
     }
 }

@@ -84,10 +84,8 @@ managePatientApp.controller('mainCtrl', ['$scope', '$http', function ($scope, $h
         var countSearchUrl ='patient/countFind';
         query.push('sortCol=' + paginationOptions.sortCol);
         query.push('direction=' + paginationOptions.sort);
-
-        var limit = paginationOptions.pageSize * paginationOptions.pageNumber;
-        query.push('limit=' + limit);
-        query.push('offset=' + (limit - paginationOptions.pageSize));
+        query.push('offset=' + ((paginationOptions.pageSize * paginationOptions.pageNumber) - paginationOptions.pageSize));
+        query.push('limit=' + paginationOptions.pageSize);
         query.push(q);
 
         var params = "";

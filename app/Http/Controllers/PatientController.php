@@ -29,7 +29,7 @@ class PatientController extends Controller
                 $sortCol ?: 'lastName',
                 in_array(strtoupper($direction), ['ASC', 'DESC']) ? $direction : 'ASC',
                 $offset ?: 0,
-                $limit ?: 4294967295,
+                $limit ?: 15,
                 $query ?: ''
             );
     }
@@ -111,19 +111,8 @@ class PatientController extends Controller
     }
 
     function countFind() {
-        $sortCol = Input::get('sortCol');
-        $direction = Input::get('direction');
-        $offset = Input::get('offset');
-        $limit = Input::get('limit');
         $query = Input::get('q');
-
-        return $this->patientRepo->countFind(
-            $sortCol ?: 'lastName',
-            in_array(strtoupper($direction), ['ASC', 'DESC']) ? $direction : 'ASC',
-            $offset ?: 0,
-            $limit ?: 4294967295,
-            $query ?: ''
-        );
+        return $this->patientRepo->countFind($query ?: '' );
     }
 }
 

@@ -17,19 +17,8 @@ class MedicineController extends Controller
     }
 
     function countFind() {
-        $sortCol = Input::get('sortCol');
-        $direction = Input::get('direction');
-        $offset = Input::get('offset');
-        $limit = Input::get('limit');
         $query = Input::get('q');
-
-        return $this->medicineRepo->countFind(
-            $sortCol ?: 'name',
-            in_array(strtoupper($direction), ['ASC', 'DESC']) ? $direction : 'ASC',
-            $offset ?: 0,
-            $limit ?: 4294967295,
-            $query ?: ''
-        );
+        return $this->medicineRepo->countFind($query ?: '' );
     }
 
     function find() {
