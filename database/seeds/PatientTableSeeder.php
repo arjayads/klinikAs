@@ -18,8 +18,7 @@ class PatientTableSeeder extends Seeder
                     'firstName'    => 'John' . $v,
                     'lastName' => 'Doe' . $v,
                     'birthDate' => '1987-01-02',
-                    'sex' => $v % 2 == 0 ? 'Male' : 'Female',
-                    'maritalStatus' => $v % 2 == 0 ? 'Single' : 'Married'
+                    'sex' => $v % 2 == 0 ? 'Male' : 'Female'
                 ]
             );
         }

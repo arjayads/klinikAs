@@ -28,7 +28,7 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 
-Route::group(['prefix' => 'user','middleware' => 'auth'], function () {
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     Route::get('list', ['uses' => 'UserController@all']);
 
 });
@@ -49,7 +49,7 @@ Route::group(['prefix' => 'patient', 'middleware' => 'auth'], function () {
 });
 
 
-Route::group(['prefix' => 'medicine'], function () {
+Route::group(['prefix' => 'medicine', 'middleware' => 'auth'], function () {
     Route::get('/', ['uses' => 'MedicineController@index']);
 
     Route::get('countFind', ['uses' => 'MedicineController@countFind']);
