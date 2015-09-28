@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/', ['middleware' => 'auth', function () {
-    return view('home');
+Route::get('/', [function () {
+    if (\Illuminate\Support\Facades\Auth::check()) {
+        return redirect("/patient");
+    } else {
+        return view('home');
+    }
 }]);
 
 
