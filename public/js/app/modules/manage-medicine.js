@@ -1,9 +1,4 @@
-var manageMedicineApp = angular.module('manageMedicine', ['ngTouch', 'ui.grid', 'ui.grid.pagination', 'dirFormError']);
-
-manageMedicineApp.config(['$interpolateProvider', function($interpolateProvider) {
-    $interpolateProvider.startSymbol('<%');
-    $interpolateProvider.endSymbol('%>');
-}]);
+var manageMedicineApp = angular.module('manageMedicine', ['config', 'ngTouch', 'ui.grid', 'ui.grid.pagination', 'dirFormError']);
 
 manageMedicineApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', function ($scope, $http, uiGridConstants) {
 

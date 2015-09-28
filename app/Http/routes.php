@@ -24,12 +24,12 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 
-Route::group(['prefix' => 'user'], function () {
+Route::group(['prefix' => 'user','middleware' => 'auth'], function () {
     Route::get('list', ['uses' => 'UserController@all']);
 
 });
 
-Route::group(['prefix' => 'patient'], function () {
+Route::group(['prefix' => 'patient', 'middleware' => 'auth'], function () {
     Route::get('/', ['uses' => 'PatientController@index']);
     Route::get('countFind', ['uses' => 'PatientController@countFind']);
     Route::get('find', ['uses' => 'PatientController@find']);

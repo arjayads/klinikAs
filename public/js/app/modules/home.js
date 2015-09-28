@@ -1,9 +1,4 @@
-var homeApp = angular.module('home', []);
-
-homeApp.config(['$interpolateProvider', function($interpolateProvider) {
-    $interpolateProvider.startSymbol('<%');
-    $interpolateProvider.endSymbol('%>');
-}]);
+var homeApp = angular.module('home', ['config']);
 
 homeApp.controller('mainCtrl', ['$scope', function ($scope) {
     $scope.message = 'Welcome';

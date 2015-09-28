@@ -1,9 +1,4 @@
-var managePatientApp = angular.module('managePatient', ['ngTouch', 'ui.grid', 'ui.grid.pagination', 'dirFormError']);
-
-managePatientApp.config(['$interpolateProvider', function($interpolateProvider) {
-    $interpolateProvider.startSymbol('<%');
-    $interpolateProvider.endSymbol('%>');
-}]);
+var managePatientApp = angular.module('managePatient', ['config', 'ngTouch', 'ui.grid', 'ui.grid.pagination', 'dirFormError']);
 
 managePatientApp.controller('mainCtrl', ['$scope', '$http', function ($scope, $http) {
 

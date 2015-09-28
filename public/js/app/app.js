@@ -18,4 +18,24 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     };
+
+    angular.module('config', []).config(['$interpolateProvider', function($interpolateProvider) {
+        $interpolateProvider.startSymbol('<%');
+        $interpolateProvider.endSymbol('%>');
+    }]);
+
 })();
+
+
+var buildFormErrors = function($scopeError, data) {
+    try {
+        for (var property in data) {
+            if (data.hasOwnProperty(property)) {
+                $scopeError[property] = data[property];
+            }
+        }
+    } catch (e) {
+        console.log(e);
+    }
+    return $scopeError;
+}
