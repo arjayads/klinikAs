@@ -107,6 +107,7 @@ managePatientApp.controller('detailCtrl', ['$scope', '$http', function ($scope, 
 
 managePatientApp.controller('editCtrl', ['$scope', '$http', function ($scope, $http) {
 
+    $scope.title = 'Create New Patient Record';
     $scope.patient = {};
     $scope.patientId = undefined;
     $scope.url = '/patient/create';
@@ -115,6 +116,7 @@ managePatientApp.controller('editCtrl', ['$scope', '$http', function ($scope, $h
         if ((patientId = newValue) !== undefined) {
             $scope.url = '/patient/update';
             $scope.caption = "Update patient";
+            $scope.title = 'Edit Patient Record';
 
             $http.get('/patient/' + patientId).success(function(data) {
                 $scope.patient = data;

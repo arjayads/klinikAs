@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
-@section('title', 'Patient Detail')
+@section('title', isset($patientId) ? 'Edit' : "New")
 
 @section('content')
     <div ng-app="managePatient">
         <div ng-controller="editCtrl">
             <div>
-                <h2>Edit Patient</h2>
+                <h2 ng-cloak><% title %></h2>
             </div>
 
             <div class="hoz-space"></div>
