@@ -150,15 +150,7 @@ managePatientApp.controller('editCtrl', ['$scope', '$http', function ($scope, $h
             }
         }).error(function(data, a) {
             if (a == '422') {
-                try {
-                    for (var property in data) {
-                        if (data.hasOwnProperty(property)) {
-                            $scope.errors[property] = data[property];
-                        }
-                    }
-                } catch (e) {
-                    console.log(e);
-                }
+                $scope.errors = buildFormErrors($scope.errors, data);
             }
             toastr.error('Something went wrong!');
             $scope.submitting = false;
