@@ -55,6 +55,11 @@
                 <img src="/images/logo1-default.png" alt="Logo">
             </a>
             <!-- End Logo -->
+            <div class="topbar">
+                <ul class="loginbar pull-right">
+                    <li><a href="/auth/login">Login</a></li>
+                </ul>
+            </div>
         </div><!--/end container-->
 
         <!-- Collect the nav links, forms, and other content for toggling -->
