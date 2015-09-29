@@ -18,14 +18,14 @@
         <div ng-controller="mainCtrl">
             <h2>Manage Patients</h2>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6 col-sm-6 col-xs-7 col-lg-6">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
                         <input class="form-control" type="text" placeholder="Search here..." ng-model="query">
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <a href="/patient/add" class="btn btn-primary  pull-right">Add</a>
+                <div class="col-md-6 col-sm-6 col-xs-5 col-lg-6">
+                    <a href="/patient/add" class="btn btn-primary pull-right">Add</a>
                 </div>
             </div>
             <div class="hoz-space"></div>
