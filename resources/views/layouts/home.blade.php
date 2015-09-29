@@ -45,7 +45,7 @@
     <script type="text/javascript" src="/js/angular/angular.min.js"></script>
 </head>
 
-<body class="boxed-layout container">
+<body>
 <div class="wrapper">
     <!--=== Header ===-->
     <div class="header">
@@ -60,13 +60,18 @@
                     <li><a href="/auth/login">Sign-in</a></li>
                 </ul>
             </div>
+
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="fa fa-bars"></span>
+            </button>
         </div><!--/end container-->
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
             <div class="container">
                 <ul class="nav navbar-nav">
-                    <li>
+                    <li class="active">
                         <a class="no-sub-menu" href="/">Home</a>
                     </li>
                     <li>
@@ -77,6 +82,12 @@
                     </li>
                     <li class="">
                         <a class="no-sub-menu" href="#">Screen shots</a>
+                    </li>
+                    <li class="">
+                        <a class="no-sub-menu" href="#">Contact Us</a>
+                    </li>
+                    <li class="">
+                        <a class="no-sub-menu" href="#">About Us</a>
                     </li>
                 </ul>
             </div><!--/end container-->
