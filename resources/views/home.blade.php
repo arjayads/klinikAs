@@ -83,6 +83,7 @@
 
     <div class="container content">
         <!-- Service Blocks -->
+        <div id="summary" class="headline"><h2>Product Summary</h2></div>
         <div class="row margin-bottom-30">
             <div class="col-md-4">
                 <div class="service">
@@ -115,7 +116,7 @@
         <!-- End Service Blokcs -->
 
         <!-- Recent Works -->
-        <div class="headline"><h2>Recent Works</h2></div>
+        <div id="features" class="headline"><h2>Features</h2></div>
         <div class="row margin-bottom-20">
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnails thumbnail-style thumbnail-kenburn">
@@ -179,8 +180,8 @@
         <!-- Info Blokcs -->
         <div class="row">
             <!-- Welcome Block -->
-            <div class="col-md-8 md-margin-bottom-40">
-                <div class="headline"><h2>Welcome To Unify</h2></div>
+            <div class="col-md-8 md-margin-bottom-40" id="images">
+                <div class="headline"><h2>Welcome To klinikAs</h2></div>
                 <div class="row">
                     <div class="col-sm-4">
                         <img class="img-responsive margin-bottom-20" src="/images/main/img6.jpg" alt="">
@@ -239,68 +240,108 @@
             </div><!--/col-md-4-->
         </div>
         <!-- End Info Blokcs -->
+
+        <div class="row">
+            <div id="about" class="container content-sm">
+                <div class="headline"><h2>About Us</h2></div>
+                <div class="row">
+                    <div class="col-md-4 service-desc md-margin-bottom-50">
+                        <i class="icon-diamond"></i>
+                        <h3>Design</h3>
+                        <p class="no-margin-bottom">Morbi ac placerat nibh, in vestibulum odio cras vel orci non dolor sagittis sollicitudin et eu jeriu ntesque.<br> Curabitur vitae augue </p>
+                    </div>
+                    <div class="col-md-4 service-desc md-margin-bottom-50">
+                        <i class="icon-rocket"></i>
+                        <h3>Development</h3>
+                        <p class="no-margin-bottom">Morbi ac placerat nibh, in vestibulum odio cras vel orci non dolor sagittis sollicitudin et eu jeriu ntesque.<br> Curabitur vitae augue </p>
+                    </div>
+                    <div class="col-md-4 service-desc">
+                        <i class="icon-support"></i>
+                        <h3>Support</h3>
+                        <p class="no-margin-bottom">Morbi ac placerat nibh, in vestibulum odio cras vel orci non dolor sagittis sollicitudin et eu jeriu ntesque.<br> Curabitur vitae augue </p>
+                    </div>
+                </div><!--/end row-->
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="contact" class="container content-sm">
+                <div class="headline"><h2>Contact Us</h2></div>
+                <div class="row">
+                    <div class="col-md-4 service-desc md-margin-bottom-50">
+                        <i class="icon-diamond"></i>
+                        <h3>Design</h3>
+                        <p class="no-margin-bottom">Morbi ac placerat nibh, in vestibulum odio cras vel orci non dolor sagittis sollicitudin et eu jeriu ntesque.<br> Curabitur vitae augue </p>
+                    </div>
+                    <div class="col-md-4 service-desc md-margin-bottom-50">
+                        <i class="icon-rocket"></i>
+                        <h3>Development</h3>
+                        <p class="no-margin-bottom">Morbi ac placerat nibh, in vestibulum odio cras vel orci non dolor sagittis sollicitudin et eu jeriu ntesque.<br> Curabitur vitae augue </p>
+                    </div>
+                    <div class="col-md-4 service-desc">
+                        <i class="icon-support"></i>
+                        <h3>Support</h3>
+                        <p class="no-margin-bottom">Morbi ac placerat nibh, in vestibulum odio cras vel orci non dolor sagittis sollicitudin et eu jeriu ntesque.<br> Curabitur vitae augue </p>
+                    </div>
+                </div><!--/end row-->
+            </div>
+        </div>
+        </div>
     </div>
 @stop
 
 @section('footer')
-    <div class="footer">
+    <div class="copyright">
         <div class="container">
             <div class="row">
-                <!-- About -->
-                <div class="col-md-3 md-margin-bottom-40">
-                    <a href="index.html"><img id="logo-footer" class="footer-logo" src="/images/logo2-default.png" alt=""></a>
-                    <p>About Unify dolor sit amet, consectetur adipiscing elit. Maecenas eget nisl id libero tincidunt sodales.</p>
-                    <p>Duis eleifend fermentum ante ut aliquam. Cras mi risus, dignissim sed adipiscing ut, placerat non arcu.</p>
-                </div><!--/col-md-3-->
-                <!-- End About -->
+                <div class="col-md-6">
+                    <p>
+                        2015 © All Rights Reserved.
+                        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                    </p>
+                </div>
 
-                <!-- Latest -->
-                <div class="col-md-3 md-margin-bottom-40">
-                    <div class="posts">
-                        <div class="headline"><h2>Latest Posts</h2></div>
-                        <ul class="list-unstyled latest-list">
-                            <li>
-                                <a href="#">Incredible content</a>
-                                <small>May 8, 2014</small>
-                            </li>
-                            <li>
-                                <a href="#">Best shoots</a>
-                                <small>June 23, 2014</small>
-                            </li>
-                            <li>
-                                <a href="#">New Terms and Conditions</a>
-                                <small>September 15, 2014</small>
-                            </li>
-                        </ul>
-                    </div>
-                </div><!--/col-md-3-->
-                <!-- End Latest -->
-
-                <!-- Link List -->
-                <div class="col-md-3 md-margin-bottom-40">
-                    <div class="headline"><h2>Useful Links</h2></div>
-                    <ul class="list-unstyled link-list">
-                        <li><a href="#">About us</a><i class="fa fa-angle-right"></i></li>
-                        <li><a href="#">Portfolio</a><i class="fa fa-angle-right"></i></li>
-                        <li><a href="#">Latest jobs</a><i class="fa fa-angle-right"></i></li>
-                        <li><a href="#">Community</a><i class="fa fa-angle-right"></i></li>
-                        <li><a href="#">Contact us</a><i class="fa fa-angle-right"></i></li>
+                <!-- Social Links -->
+                <div class="col-md-6">
+                    <ul class="footer-socials list-inline">
+                        <li>
+                            <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Skype">
+                                <i class="fa fa-skype"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Google Plus">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linkedin">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Pinterest">
+                                <i class="fa fa-pinterest"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Dribbble">
+                                <i class="fa fa-dribbble"></i>
+                            </a>
+                        </li>
                     </ul>
-                </div><!--/col-md-3-->
-                <!-- End Link List -->
-
-                <!-- Address -->
-                <div class="col-md-3 md-margin-bottom-40">
-                    <div class="headline"><h2>Contact Us</h2></div>
-                    <address class="md-margin-bottom-40">
-                        25, Lorem Lis Street, Orange <br>
-                        California, US <br>
-                        Phone: 800 123 3456 <br>
-                        Fax: 800 123 3456 <br>
-                        Email: <a href="mailto:info@anybiz.com" class="">info@anybiz.com</a>
-                    </address>
-                </div><!--/col-md-3-->
-                <!-- End Address -->
+                </div>
+                <!-- End Social Links -->
             </div>
         </div>
     </div>

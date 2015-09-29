@@ -75,19 +75,19 @@
                         <a class="no-sub-menu" href="/">Home</a>
                     </li>
                     <li>
-                        <a class="no-sub-menu" href="#">Product summary</a>
+                        <a class="no-sub-menu" href="#summary">Product summary</a>
                     </li>
                     <li class="">
-                        <a class="no-sub-menu" href="#">Features</a>
+                        <a class="no-sub-menu" href="#features">Features</a>
                     </li>
                     <li class="">
-                        <a class="no-sub-menu" href="#">Screen shots</a>
+                        <a class="no-sub-menu" href="#images">Screen shots</a>
                     </li>
                     <li class="">
-                        <a class="no-sub-menu" href="#">Contact Us</a>
+                        <a class="no-sub-menu" href="#contact">Contact Us</a>
                     </li>
                     <li class="">
-                        <a class="no-sub-menu" href="#">About Us</a>
+                        <a class="no-sub-menu" href="#about">About Us</a>
                     </li>
                 </ul>
             </div><!--/end container-->
@@ -127,7 +127,23 @@
         App.init();
         OwlCarousel.initOwlCarousel();
         RevolutionSlider.initRSfullWidth();
+
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+                    || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
     });
+
 </script>
 
 @yield('javascript')
