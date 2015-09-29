@@ -21,7 +21,10 @@
         ],
         "psr-4": {
             "ManageMe\\": "app/"
-        }
+        },
+        "files": [
+          "app/Helpers/MyMigrationHelper.php"
+        ]
     },
     "autoload-dev": {
         "classmap": [

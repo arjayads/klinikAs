@@ -16,7 +16,7 @@ class CreateTableMedicine extends Migration
             $table->increments('id')->index();
             $table->string('name');
             $table->timestamp('createdAt')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updatedAt')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamp('updatedAt')->default(DB::raw('CURRENT_TIMESTAMP' . MyMigrationHelper::getTimestampUpdateSetting()));
         });
     }
 

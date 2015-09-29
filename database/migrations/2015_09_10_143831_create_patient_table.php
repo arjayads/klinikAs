@@ -29,7 +29,7 @@ class CreatePatientTable extends Migration
             $table->string('contactNumber')->nullable();
             $table->integer('FK_clinicId')->nullable();
             $table->timestamp('createdAt')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updatedAt')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamp('updatedAt')->default(DB::raw('CURRENT_TIMESTAMP' . MyMigrationHelper::getTimestampUpdateSetting()));
         });
     }
 

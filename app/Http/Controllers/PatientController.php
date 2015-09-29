@@ -3,6 +3,7 @@
 namespace ManageMe\Http\Controllers;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use ManageMe\Http\Requests;
 use ManageMe\Models\Patient;

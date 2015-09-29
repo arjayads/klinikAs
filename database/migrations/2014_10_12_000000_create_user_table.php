@@ -19,7 +19,7 @@ class CreateUserTable extends Migration
             $table->tinyInteger('isActive')->default(true);
             $table->rememberToken();
             $table->timestamp('createdAt')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updatedAt')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamp('updatedAt')->default(DB::raw('CURRENT_TIMESTAMP' . MyMigrationHelper::getTimestampUpdateSetting()));
         });
     }
 
