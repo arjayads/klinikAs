@@ -18,7 +18,7 @@ class CreatePatientTable extends Migration
             $table->string('middleName')->nullable();
             $table->string('lastName');
             $table->date('birthDate');
-            $table->text('address');
+            $table->text('address')->nullable();
             $table->string('occupation')->nullable();
             $table->enum('sex', ['Male', 'Female']);
             $table->integer('FK_raceId')->nullable();
