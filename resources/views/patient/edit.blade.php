@@ -83,7 +83,7 @@
                             <div class="col-md-3">
                                 <label for="sex">Sex</label>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-3">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-magnet"></i></span>
                                     <select required="" id="sex" class="form-control" ng-model="patient.sex">
@@ -99,85 +99,110 @@
                         <div class="hoz-space"></div>
                         <div class="row">
                             <div class="col-md-3">
-                                <label for="mstatus">Marital Status</label>
+                                <label for="occupation">Occupation</label>
                             </div>
                             <div class="col-md-9">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-magnet"></i></span>
-                                    <select required="" id="mstatus" class="form-control" ng-model="patient.maritalStatus">
-                                        <option value="">Select status</option>
-                                        <option value="Married">Married</option>
-                                        <option value="Single">Single</option>
-                                    </select>
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input ng-model="patient.occupation"
+                                           type="text"  placeholder="Enter occupation"
+                                           class="input-sm form-control" id="occupation">
                                 </div>
-                                <form-error err_field="errors.maritalStatus"></form-error>
+                                <form-error err_field="errors.occupation"></form-error>
+                            </div>
+                        </div>
+
+                        <div class="hoz-space"></div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="contactNumber">Contact Number</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                    <input placeholder="Enter contact number" type="text" id="contactNumber"
+                                           name="contactNumber" class="form-control"
+                                           ng-model="patient.contactNumber">
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label for="address">Addess</label>
-                            </div>
-                            <div class="col-md-9">
-                                <textarea placeholder="Enter address" id="address" name="address" class="form-control" ng-model="patient.address"></textarea>
-                            </div>
-                        </div>
 
-                        <div class="hoz-space"></div>
                         <div class="row">
                             <div class="col-md-3">
-                                <label for="telephone">Telephone</label>
+                                <label for="fatherName">Father's Name</label>
                             </div>
                             <div class="col-md-9">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                    <input placeholder="Enter telephone number" type="text" id="telephone"
-                                           name="telephone" class="form-control"
-                                           ng-model="patient.telephone">
+                                    <input placeholder="Enter father's name" type="text" id="fatherName"
+                                       name="fatherName" class="form-control"
+                                       ng-model="patient.fatherName">
                                 </div>
+                                <form-error err_field="errors.fatherName"></form-error>
                             </div>
                         </div>
 
                         <div class="hoz-space"></div>
                         <div class="row">
                             <div class="col-md-3">
-                                <label for="mobile">Mobile Number</label>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                    <input placeholder="Enter mobile number" type="text" id="mobile"
-                                       name="mobileNumber" class="form-control"
-                                       ng-model="patient.mobileNumber">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="hoz-space"></div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label for="email">Email</label>
+                                <label style="padding-top: 0" for="fatherOccupation">Father's Occupation</label>
                             </div>
                             <div class="col-md-9">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                    <input placeholder="Enter email" type="text" id="email"
-                                           name="email" class="form-control"
-                                           ng-model="patient.email">
+                                    <input placeholder="Enter father's occupation" type="text" id="fatherOccupation"
+                                           name="fatherOccupation" class="form-control"
+                                           ng-model="patient.fatherOccupation">
                                 </div>
-                                <form-error err_field="errors.email"></form-error>
+                                <form-error err_field="errors.fatherOccupation"></form-error>
+                            </div>
+                        </div>
+
+                        <div class="hoz-space"></div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="motherName">Mother's Name</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                    <input placeholder="Enter mother's name" type="text" id="motherName"
+                                           name="motherName" class="form-control"
+                                           ng-model="patient.motherName">
+                                </div>
+                                <form-error err_field="errors.motherName"></form-error>
                             </div>
                         </div>
 
                         <div class="hoz-space"></div>
                         <div class="row">
                             <div class="col-md-3">
-                                <label for="remark">Remark</label>
+                                <label style="padding-top: 0" for="motherOccupation">Mother's Occupation</label>
                             </div>
                             <div class="col-md-9">
-                                <textarea placeholder="Write remark" id="remark" name="remark" class="form-control" ng-model="patient.remark"></textarea>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                    <input placeholder="Enter mother's occupation" type="text" id="motherOccupation"
+                                           name="motherOccupation" class="form-control"
+                                           ng-model="patient.motherOccupation">
+                                </div>
+                                <form-error err_field="errors.motherOccupation"></form-error>
+                            </div>
+                        </div>
+
+                        <div class="hoz-space"></div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="address">Address</label>
+                            </div>
+                            <div class="col-md-9">
+                                <textarea placeholder="Enter address" id="address" name="address" class="form-control" ng-model="patient.address"></textarea>
                             </div>
                         </div>
                     </div>

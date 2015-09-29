@@ -69,10 +69,10 @@
                     <div class="hoz-space"></div>
                     <div class="row">
                         <div class="col-md-3">
-                            <label>Marital Status</label>
+                            <label>Occupation</label>
                         </div>
                         <div class="col-md-9">
-                            <span>{{ $patient->maritalStatus }}</span>
+                            <span>{{ $patient->occupation }}</span>
                         </div>
                     </div>
 
@@ -98,52 +98,63 @@
                 </div>
 
                 <div class="col-md-6">
+
                     <div class="row">
                         <div class="col-md-3">
-                            <label>Addess</label>
+                            <label>Contact Number</label>
+                        </div>
+                        <div class="col-md-9">
+                            <span>{{ $patient->contactNumber }}</span>
+                        </div>
+                    </div>
+
+                    <div class="hoz-space"></div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Father's Name</label>
+                        </div>
+                        <div class="col-md-9">
+                            <span>{{ $patient->fatherName }}</span>
+                        </div>
+                    </div>
+
+                    <div class="hoz-space"></div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Father's Occupation</label>
+                        </div>
+                        <div class="col-md-9">
+                            <span>{{ $patient->fatherOccupation }}</span>
+                        </div>
+                    </div>
+
+                    <div class="hoz-space"></div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Mother's Name</label>
+                        </div>
+                        <div class="col-md-9">
+                            <span>{{ $patient->motherName }}</span>
+                        </div>
+                    </div>
+
+                    <div class="hoz-space"></div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Mother's Occupation</label>
+                        </div>
+                        <div class="col-md-9">
+                            <span>{{ $patient->motherOccupation }}</span>
+                        </div>
+                    </div>
+
+                    <div class="hoz-space"></div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Address</label>
                         </div>
                         <div class="col-md-9">
                             <span>{{ $patient->address }}</span>
-                        </div>
-                    </div>
-
-                    <div class="hoz-space"></div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label>Telephone</label>
-                        </div>
-                        <div class="col-md-9">
-                            <span>{{ $patient->telephone }}</span>
-                        </div>
-                    </div>
-
-                    <div class="hoz-space"></div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label>Mobile Number</label>
-                        </div>
-                        <div class="col-md-9">
-                            <span>{{ $patient->mobileNumber }}</span>
-                        </div>
-                    </div>
-
-                    <div class="hoz-space"></div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label>Email</label>
-                        </div>
-                        <div class="col-md-9">
-                            <span>{{ $patient->email }}</span>
-                        </div>
-                    </div>
-
-                    <div class="hoz-space"></div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label>Remark</label>
-                        </div>
-                        <div class="col-md-9">
-                            <span>{{ $patient->remark }}</span>
                         </div>
                     </div>
 

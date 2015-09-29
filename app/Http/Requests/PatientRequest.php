@@ -27,9 +27,7 @@ class PatientRequest extends Request
             'firstName' => 'required|max:255',
             'lastName' => 'required|max:255',
             'birthDate' => 'required|date',
-            'sex' => 'required|in:Male,Female',
-            'maritalStatus' => 'required|in:Married,Single',
-            'email' => 'email',
+            'sex' => 'required|in:Male,Female'
         ];
     }
 }
