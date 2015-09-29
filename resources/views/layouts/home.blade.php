@@ -57,13 +57,30 @@
             <!-- End Logo -->
             <div class="topbar">
                 <ul class="loginbar pull-right">
-                    <li><a href="/auth/login">Login</a></li>
+                    <li><a href="/auth/login">Sign-in</a></li>
                 </ul>
             </div>
         </div><!--/end container-->
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-         @include('layouts.nav')
+        <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li class="">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="">
+                        <a href="#">Product summary</a>
+                    </li>
+                    <li class="">
+                        <a href="#">Features</a>
+                    </li>
+                    <li class="">
+                        <a href="#">Screen shots</a>
+                    </li>
+                </ul>
+            </div><!--/end container-->
+        </div><!--/navbar-collapse-->
     </div>
     <!--=== End Header ===-->
 

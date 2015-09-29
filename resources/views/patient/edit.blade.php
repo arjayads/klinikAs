@@ -103,7 +103,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-suitcase"></i></span>
                                     <input ng-model="patient.occupation"
                                            type="text"  placeholder="Enter occupation"
                                            class="input-sm form-control" id="occupation">
@@ -137,7 +137,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-user-md"></i></span>
                                     <input placeholder="Enter father's name" type="text" id="fatherName"
                                        name="fatherName" class="form-control"
                                        ng-model="patient.fatherName">
@@ -153,7 +153,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-suitcase"></i></span>
                                     <input placeholder="Enter father's occupation" type="text" id="fatherOccupation"
                                            name="fatherOccupation" class="form-control"
                                            ng-model="patient.fatherOccupation">
@@ -170,7 +170,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-user-md"></i></span>
                                     <input placeholder="Enter mother's name" type="text" id="motherName"
                                            name="motherName" class="form-control"
                                            ng-model="patient.motherName">
@@ -186,7 +186,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-suitcase"></i></span>
                                     <input placeholder="Enter mother's occupation" type="text" id="motherOccupation"
                                            name="motherOccupation" class="form-control"
                                            ng-model="patient.motherOccupation">
