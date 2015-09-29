@@ -39,3 +39,9 @@ var buildFormErrors = function($scopeError, data) {
     }
     return $scopeError;
 }
+
+var setDatePickerVal = function(v) {
+    $('.datepicker').datepicker('setDate', v);
+    $('.datepicker').datepicker('update');
+    $('.datepicker').val('');
+}

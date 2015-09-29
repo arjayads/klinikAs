@@ -121,6 +121,7 @@ managePatientApp.controller('editCtrl', ['$scope', '$http', function ($scope, $h
             $http.get('/patient/' + patientId).success(function(data) {
                 $scope.patient = data;
                 $scope.patient.birthDate = $.datepicker.formatDate('mm/dd/yy', new Date(data.birthDate));
+                setDatePickerVal($scope.patient.birthDate);
             }).error(function() {
                 toastr.error('Something went wrong!');
             });

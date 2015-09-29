@@ -83,7 +83,7 @@
                             <div class="col-md-3">
                                 <label for="sex">Sex</label>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-5"  style="padding-right: 7px">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-magnet"></i></span>
                                     <select required="" id="sex" class="form-control" ng-model="patient.sex">
@@ -238,6 +238,8 @@
                 autoclose: true,
                 format: "mm/dd/yyyy"
             });
+
+            setDatePickerVal(new Date());
         })
 
 
