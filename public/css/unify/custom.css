@@ -1,1 +1,5 @@
 /* Add here all your css styles (customizations) */
+
+.no-sub-menu {
+    padding-right: 20px !important;
+}

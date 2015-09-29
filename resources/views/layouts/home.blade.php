@@ -66,17 +66,17 @@
         <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
             <div class="container">
                 <ul class="nav navbar-nav">
-                    <li class="">
-                        <a href="/">Home</a>
+                    <li>
+                        <a class="no-sub-menu" href="/">Home</a>
+                    </li>
+                    <li>
+                        <a class="no-sub-menu" href="#">Product summary</a>
                     </li>
                     <li class="">
-                        <a href="#">Product summary</a>
+                        <a class="no-sub-menu" href="#">Features</a>
                     </li>
                     <li class="">
-                        <a href="#">Features</a>
-                    </li>
-                    <li class="">
-                        <a href="#">Screen shots</a>
+                        <a class="no-sub-menu" href="#">Screen shots</a>
                     </li>
                 </ul>
             </div><!--/end container-->
