@@ -7,11 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 class MedicineRepo {
 
-    function find($sortCol = 'name', $direction = 'ASC', $offset = 0, $limit = 15, $query = '') {
+    function find($sortCol = 'genericName', $direction = 'ASC', $offset = 0, $limit = 15, $query = '') {
         $q = DB::table('Medicine');
 
         if (strlen($query) > 0) {
-            $q->where('name', 'LIKE', ('%'.$query.'%'));
+            $q->where('genericName', 'LIKE', ('%'.$query.'%'))
+                ->orWhere('commercialName', 'LIKE', ('%'.$query.'%'));
         }
         return $q->orderBy($sortCol, $direction)
             ->take($limit)
@@ -23,7 +24,8 @@ class MedicineRepo {
         $q = DB::table('Medicine');
 
         if (strlen($query) > 0) {
-            $q->where('name', 'LIKE', ('%'.$query.'%'));
+            $q->where('genericName', 'LIKE', ('%'.$query.'%'))
+                ->orWhere('commercialName', 'LIKE', ('%'.$query.'%'));
         }
         return $q->count();
     }

@@ -13,9 +13,14 @@ class MedicineTableSeeder extends Seeder
     {
         $r = range(1, 50);
         foreach($r as $v) {
+            $rs = str_random(6);
             DB::table('Medicine')->insert(
                 [
-                    'name'    => 'Brand ' . $v
+                    'genericName'    => 'Generic-' . $rs  . $v,
+                    'commercialName'    => 'Commercial-' . $rs . $v,
+                    'brand'    => 'Brand-' . $rs . $v,
+                    'unitMeasure'    => 'Unit-' . $rs. $v,
+                    'defaultInstructions'    => 'Instructions: ' . $rs . $v
                 ]
             );
         }

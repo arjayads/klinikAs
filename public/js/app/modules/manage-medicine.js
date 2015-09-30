@@ -14,7 +14,7 @@ manageMedicineApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', 
         pageNumber: 1,
         pageSize: 15,
         sort: 'asc',
-        sortCol: 'name'
+        sortCol: 'genericName'
     };
 
     $scope.$watch('query', function(searchText, oldValue) {
@@ -38,10 +38,19 @@ manageMedicineApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', 
         useExternalPagination: true,
         columnDefs: [
             {
-                field: 'Name',
+                field: 'genericName',
                 enableSorting: true,
                 enableHiding: false,
-                cellTemplate: '<a href="{{grid.appScope.buildCellUrl(row.entity.id)}}" class="ui-grid-cell-contents">{{row.entity.name}}</a>'
+                cellTemplate: '<a href="{{grid.appScope.buildCellUrl(row.entity.id)}}" class="ui-grid-cell-contents">{{row.entity.genericName}}</a>'
+            },
+            {
+                field: 'commercialName',  enableSorting: true, enableHiding: false
+            },
+            {
+                field: 'brand',  enableSorting: true, enableHiding: false
+            },
+            {
+                field: 'unitMeasure',  displayName: 'Unit', enableSorting: true, enableHiding: false
             },
             {
                 field: 'updatedAt',  displayName: 'Last updated', enableSorting: true, enableHiding: false,
@@ -53,7 +62,7 @@ manageMedicineApp.controller('mainCtrl', ['$scope', '$http', 'uiGridConstants', 
             $scope.gridApi.core.on.sortChanged($scope, function(grid, sortColumns) {
                 if (sortColumns.length == 0) {
                     paginationOptions.sort = 'asc';
-                    paginationOptions.sortCol = 'name';
+                    paginationOptions.sortCol = 'genericName';
                 } else {
                     paginationOptions.sort = sortColumns[0].sort.direction;
                     paginationOptions.sortCol = sortColumns[0].field;

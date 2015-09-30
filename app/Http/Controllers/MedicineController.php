@@ -29,7 +29,7 @@ class MedicineController extends Controller
         $query = Input::get('q');
 
         return $this->medicineRepo->find(
-            $sortCol ?: 'name',
+            $sortCol ?: 'genericName',
             in_array(strtoupper($direction), ['ASC', 'DESC']) ? $direction : 'ASC',
             $offset ?: 0,
             $limit ?: 4294967295,
