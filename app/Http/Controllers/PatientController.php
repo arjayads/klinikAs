@@ -75,9 +75,7 @@ class PatientController extends Controller
 
         $patient = Patient::find($params['id']);
         if ($patient) {
-            foreach ($params as $key => $value) {
-                $patient->$key = $value;
-            }
+            $patient = \Helper::arrayToObject($params, $patient);
             $patient->birthDate = Carbon::createFromFormat('m/d/Y', $params['birthDate']);
             $result = $patient->save();
             if($result) {

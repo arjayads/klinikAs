@@ -23,7 +23,8 @@
             "ManageMe\\": "app/"
         },
         "files": [
-          "app/Helpers/MyMigrationHelper.php"
+          "app/Helpers/MyMigrationHelper.php",
+          "app/Helpers/Helper.php"
         ]
     },
     "autoload-dev": {
