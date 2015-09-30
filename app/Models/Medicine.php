@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: gwdev1
- * Date: 9/11/15
- * Time: 4:36 AM
+ * Date: 10/1/15
+ * Time: 1:51 AM
  */
 
 namespace ManageMe\Models;
@@ -11,14 +11,16 @@ namespace ManageMe\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Patient extends Model {
+class Medicine extends Model {
+
 
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'Patient';
+    protected $table = 'Medicine';
+
 
     /**
      * The attributes that are mass assignable.
@@ -26,18 +28,8 @@ class Patient extends Model {
      * @var array
      */
     protected $fillable = [
-        'firstName', 'middleName', 'lastName', 'birthDate', 'occupation',
-        'sex', 'fatherName', 'address', 'fatherOccupation', 'motherName',
-        'motherOccupation', 'contactNumber'
+        'genericName', 'commercialName', 'brand', 'unitMeasure', 'defaultInstructions'
     ];
-
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [];
-
 
     /**
      * Indicates if the model should be timestamped.
@@ -45,4 +37,5 @@ class Patient extends Model {
      * @var bool
      */
     public $timestamps = false;
+
 }

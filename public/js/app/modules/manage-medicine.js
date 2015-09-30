@@ -114,23 +114,24 @@ manageMedicineApp.controller('detailCtrl', ['$scope', '$http', function ($scope,
 
 manageMedicineApp.controller('editCtrl', ['$scope', '$http', function ($scope, $http) {
 
+    $scope.title = "Add medicine";
     $scope.patient = {};
-    $scope.patientId = undefined;
-    $scope.url = '/patient/create';
+    $scope.medicineId = undefined;
+    $scope.url = '/medicine/create';
 
-    $scope.$watch('patientId', function(newValue, oldValue) {
+    $scope.$watch('medicineId', function(newValue, oldValue) {
         if ((patientId = newValue) !== undefined) {
-            $scope.url = '/patient/update';
-            $scope.caption = "Update patient";
+            $scope.url = '/medicine/update';
+            $scope.caption = "Update medicine";
+            $scope.title = "Update medicine";
 
-            $http.get('/patient/' + patientId).success(function(data) {
-                $scope.patient = data;
-                $scope.patient.birthDate = $.datepicker.formatDate('mm/dd/yy', new Date(data.birthDate));
+            $http.get('/medicine/' + medicineId).success(function(data) {
+                $scope.medicine = data;
             }).error(function() {
                 toastr.error('Something went wrong!');
             });
         } else {
-            $scope.caption = "Add patient";
+            $scope.caption = "Add medicine";
         }
     });
 
@@ -142,14 +143,14 @@ manageMedicineApp.controller('editCtrl', ['$scope', '$http', function ($scope, $
         $scope.submitting = true;
         $scope.errors = {};
 
-        $scope.patient.birthDate =  $('#dob').val();
 
-        $http.post($scope.url, $scope.patient).success(function(data) {
+        $http.post($scope.url, $scope.medicine).success(function(data) {
             if (!data.error) {
-                toastr.success('Patient successfully saved');
+                toastr.success('Medicine successfully saved');
                 $scope.caption ='Saved';
                 setTimeout(function(){
-                    window.location = '/patient/' + data.entityId + '/detail';
+                    //window.location = '/patient/' + data.entityId + '/detail';
+                    window.location = '/medicine';
                 }, 2000);
             } else {
                 $scope.submitting = false;
@@ -157,15 +158,7 @@ manageMedicineApp.controller('editCtrl', ['$scope', '$http', function ($scope, $
             }
         }).error(function(data, a) {
             if (a == '422') {
-                try {
-                    for (var property in data) {
-                        if (data.hasOwnProperty(property)) {
-                            $scope.errors[property] = data[property];
-                        }
-                    }
-                } catch (e) {
-                    console.log(e);
-                }
+                $scope.errors = buildFormErrors($scope.errors, data);
             }
             toastr.error('Something went wrong!');
             $scope.submitting = false;

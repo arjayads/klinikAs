@@ -95,14 +95,10 @@ class PatientController extends Controller
         $params = $request->all();
 
         if ($params) {
-            $patient = new Patient();
-            foreach ($params as $key => $value) {
-                $patient->$key = $value;
-            }
-            $patient->birthDate = Carbon::createFromFormat('m/d/Y', $params['birthDate']);
-            $result = $patient->save();
+            $params['birthDate'] = Carbon::createFromFormat('m/d/Y', $params['birthDate']);
+            $result = Patient::create($params);
             if($result) {
-                return ['error' => false, 'message' => 'Patient successfully added.', 'entityId' => $patient->id];
+                return ['error' => false, 'message' => 'Patient successfully added.', 'entityId' => $result->id];
             } else {
                 return ['error' => true, 'message' => 'Something went wrong.'];
             }

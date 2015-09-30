@@ -4,6 +4,7 @@ namespace ManageMe\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
 use ManageMe\Http\Requests;
+use ManageMe\Models\Medicine;
 use ManageMe\Repositories\MedicineRepo;
 
 class MedicineController extends Controller
@@ -68,7 +69,7 @@ class MedicineController extends Controller
     }
 
     function add() {
-        return view('patient.edit', ['patientId' => null]);
+        return view('medicine.edit', ['medicineId' => null]);
     }
 
     function update(Requests\PatientRequest $request) {
@@ -92,24 +93,19 @@ class MedicineController extends Controller
 //        }
     }
 
-    function create(Requests\PatientRequest $request) {
+    function create(Requests\MedicineRequest $request) {
 
-//        $params = $request->all();
-//
-//        if ($params) {
-//            $patient = new Patient();
-//            foreach ($params as $key => $value) {
-//                $patient->$key = $value;
-//            }
-//            $patient->birthDate = Carbon::createFromFormat('m/d/Y', $params['birthDate']);
-//            $result = $patient->save();
-//            if($result) {
-//                return ['error' => false, 'message' => 'Patient successfully added.', 'entityId' => $patient->id];
-//            } else {
-//                return ['error' => true, 'message' => 'Something went wrong.'];
-//            }
-//        } else {
-//            return ['error' => true, 'message' => 'Invalid data'];
-//        }
+        $params = $request->all();
+
+        if ($params) {
+            $result = Medicine::create($params);
+            if($result) {
+                return ['error' => false, 'message' => 'Medicine successfully added.', 'entityId' => $result->id];
+            } else {
+                return ['error' => true, 'message' => 'Something went wrong.'];
+            }
+        } else {
+            return ['error' => true, 'message' => 'Invalid data'];
+        }
     }
 }
