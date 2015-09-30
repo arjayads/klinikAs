@@ -38,6 +38,10 @@
 
     <!-- CSS Customization -->
     <link rel="stylesheet" href="/css/unify/custom.css">
+    <link href="/css/toastr/toastr.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/datepicker/datepicker3.css" rel="stylesheet" type="text/css">
+    <link href="/css/app/clinic.css" rel="stylesheet" type="text/css">
 
 
     @yield('css')
@@ -57,7 +61,7 @@
             <!-- End Logo -->
             <div class="topbar">
                 <ul class="loginbar pull-right">
-                    <li><a href="/auth/login">Sign-in</a></li>
+                    <li><a href="/auth/logout">Logout</a></li>
                 </ul>
             </div>
 
@@ -68,30 +72,7 @@
         </div><!--/end container-->
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
-            <div class="container">
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a class="no-sub-menu" href="/">Home</a>
-                    </li>
-                    <li>
-                        <a class="no-sub-menu" href="#summary">Product summary</a>
-                    </li>
-                    <li class="">
-                        <a class="no-sub-menu" href="#features">Features</a>
-                    </li>
-                    <li class="">
-                        <a class="no-sub-menu" href="#images">Screen shots</a>
-                    </li>
-                    <li class="">
-                        <a class="no-sub-menu" href="#contact">Contact Us</a>
-                    </li>
-                    <li class="">
-                        <a class="no-sub-menu" href="#about">About Us</a>
-                    </li>
-                </ul>
-            </div><!--/end container-->
-        </div><!--/navbar-collapse-->
+        @include('layouts.nav')
     </div>
     <!--=== End Header ===-->
 
@@ -110,6 +91,17 @@
 <script type="text/javascript" src="/js/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="/js/jquery/jquery-migrate.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery/jquery-ui-1.10.4.min.js"></script>
+
+<script type="text/javascript" src="/js/angular/ui-bootstrap-0.11.0.min.js"></script>
+<script type="text/javascript" src="/js/angular/angular-touch.min.js"></script>
+<script type="text/javascript" src="/js/angular/angular-animate.min.js"></script>
+
+<script type="text/javascript" src="/js/datepicker/datepicker.js"></script>
+<script type="text/javascript" src="/js/toastr/toastr.min.js"></script>
+<script type="text/javascript" src="/js/app/app.js"></script>
+
 <!-- JS Implementing Plugins -->
 <script type="text/javascript" src="/js/unify/back-to-top.js"></script>
 <script type="text/javascript" src="/plugins/smoothScroll.js"></script>
@@ -122,6 +114,10 @@
 <script type="text/javascript" src="/js/unify/app.js"></script>
 <script type="text/javascript" src="/js/unify/owl-carousel.js"></script>
 <script type="text/javascript" src="/js/unify/revolution-slider.js"></script>
+
+
+@yield('javascript')
+
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
@@ -146,14 +142,11 @@
 
 </script>
 
-@yield('javascript')
-
 <!--[if lt IE 9]>
 <script src="/js/unify/respond.js"></script>
 <script src="/js/unify/html5shiv.js"></script>
 <script src="/js/unify/placeholder-IE-fixes.js"></script>
 <![endif]-->
-
 
 </body>
 </html>

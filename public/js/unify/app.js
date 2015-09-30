@@ -176,6 +176,20 @@ var App = function () {
         jQuery('.popovers-destroy').popover('destroy');
     }
 
+    /*Setting an active menu item based on the current URL*/
+    function setNavigation() {
+        var path = window.location.pathname;
+        path = path.replace(/\/$/, "");
+        path = decodeURIComponent(path);
+
+        $(".nav a").each(function () {
+            var href = $(this).attr('href');
+            if (path.substring(0, href.length) === href) {
+                $(this).closest('li').addClass('active');
+            }
+        });
+    }
+
     return {
         init: function () {
             handleBootstrap();
@@ -189,6 +203,7 @@ var App = function () {
             handleMegaMenu();
             handleHoverSelector();
             handleEqualHeightColumns();
+            setNavigation();
         },
 
         //Counters 

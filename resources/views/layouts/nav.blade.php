@@ -2,20 +2,20 @@
     <div class="container">
         <ul class="nav navbar-nav">
             <!-- Home -->
-            <li class="">
-                <a href="/">Home</a>
+            <li>
+                <a class="no-sub-menu" href="/home">Home</a>
             </li>
             <!-- End Home -->
 
             <!-- Patients -->
-            <li class="">
-                <a href="/patient">Patients</a>
+            <li>
+                <a class="no-sub-menu" href="/patient">Patients</a>
             </li>
             <!-- End Patients -->
 
             <!-- Medicines -->
-            <li class="">
-                <a href="/medicine">Medicines</a>
+            <li>
+                <a class="no-sub-menu" href="/medicine">Medicines</a>
             </li>
             <!-- End Medicines -->
         </ul>

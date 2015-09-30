@@ -13,11 +13,20 @@
 
 Route::get('/', [function () {
     if (\Illuminate\Support\Facades\Auth::check()) {
-        return redirect("/patient");
+        return redirect('/home');
     } else {
-        return view('home');
+        return view('portal');
     }
 }]);
+
+Route::get('/home', [function () {
+    if (\Illuminate\Support\Facades\Auth::check()) {
+        return view('home');
+    } else {
+        return view('portal');
+    }
+}]);
+
 
 
 // Authentication routes...

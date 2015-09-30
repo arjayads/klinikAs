@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.unify')
 
 @section('title', isset($patientId) ? 'Edit' : "New")
 
