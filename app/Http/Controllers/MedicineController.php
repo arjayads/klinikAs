@@ -72,10 +72,10 @@ class MedicineController extends Controller
         return view('medicine.edit', ['medicineId' => null]);
     }
 
-    function update(Requests\PatientRequest $request) {
+    function update(Requests\MedicineRequest $request) {
 
-//        $params = $request->all();
-//
+        $params = $request->all();
+
 //        $patient = Patient::find($params['id']);
 //        if ($patient) {
 //            foreach ($params as $key => $value) {
