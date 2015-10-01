@@ -39,12 +39,12 @@ class MedicineController extends Controller
     }
 
     function detail($id) {
-//        $patient = Patient::find($id);
-//        if ($patient) {
-//            return view('patient.detail', ['patient' => $patient]);
-//        } else {
-//            return redirect()->action('PatientController@notFound');
-//        }
+        $m = Medicine::find($id);
+        if ($m) {
+            return view('medicine.detail', ['medicine' => $m]);
+        } else {
+            return redirect()->action('MedicineController@notFound');
+        }
     }
 
     function findOne($id) {
@@ -56,7 +56,7 @@ class MedicineController extends Controller
     }
 
     function notFound() {
-        return view('patient.notFound');
+        return view('medicine.notFound');
     }
 
     function edit($id) {
