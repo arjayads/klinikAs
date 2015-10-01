@@ -1,4 +1,4 @@
-@extends('layouts.message')
+@extends('layouts.unify')
 
 @section('title', 'Medicine Not Found')
 

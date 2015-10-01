@@ -120,7 +120,7 @@ manageMedicineApp.controller('editCtrl', ['$scope', '$http', function ($scope, $
     $scope.url = '/medicine/create';
 
     $scope.$watch('medicineId', function(newValue, oldValue) {
-        if ((patientId = newValue) !== undefined) {
+        if ((medicineId = newValue) !== undefined) {
             $scope.url = '/medicine/update';
             $scope.caption = "Update medicine";
             $scope.title = "Update medicine";

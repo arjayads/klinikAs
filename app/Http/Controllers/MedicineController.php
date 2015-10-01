@@ -48,11 +48,11 @@ class MedicineController extends Controller
     }
 
     function findOne($id) {
-//        $p = Patient::find($id);
-//        if ($p) {
-//            return $p;
-//        }
-//        return ['error' => 'true', 'message' => 'Patient not found!'];
+        $m = Medicine::find($id);
+        if ($m) {
+            return $m;
+        }
+        return ['error' => 'true', 'message' => 'Medicine not found!'];
     }
 
     function notFound() {
@@ -60,12 +60,12 @@ class MedicineController extends Controller
     }
 
     function edit($id) {
-//        $patient = Patient::find($id);
-//        if ($patient) {
-//            return view('patient.edit', ['patientId' => $patient->id]);
-//        } else {
-//            return redirect()->action('PatientController@notFound');
-//        }
+        $m = Medicine::find($id);
+        if ($m) {
+            return view('medicine.edit', ['medicineId' => $m->id]);
+        } else {
+            return redirect()->action('PatientController@notFound');
+        }
     }
 
     function add() {
@@ -76,21 +76,20 @@ class MedicineController extends Controller
 
         $params = $request->all();
 
-//        $patient = Patient::find($params['id']);
-//        if ($patient) {
-//            foreach ($params as $key => $value) {
-//                $patient->$key = $value;
-//            }
-//            $patient->birthDate = Carbon::createFromFormat('m/d/Y', $params['birthDate']);
-//            $result = $patient->save();
-//            if($result) {
-//                return ['error' => false, 'message' => 'Patient successfully saved.', 'entityId' => $patient->id] ;
-//            } else {
-//                return ['error' => true, 'message' => 'Something went wrong.'];
-//            }
-//        } else {
-//            return ['error' => true, 'message' => 'Patient does not exist.'];
-//        }
+        $m = Medicine::find($params['id']);
+        if ($m) {
+            foreach ($params as $key => $value) {
+                $m->$key = $value;
+            }
+            $result = $m->save();
+            if($result) {
+                return ['error' => false, 'message' => 'Medicine successfully saved.', 'entityId' => $m->id] ;
+            } else {
+                return ['error' => true, 'message' => 'Something went wrong.'];
+            }
+        } else {
+            return ['error' => true, 'message' => 'Medicine does not exist.'];
+        }
     }
 
     function create(Requests\MedicineRequest $request) {
