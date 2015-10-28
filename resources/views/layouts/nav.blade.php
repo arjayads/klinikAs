@@ -3,7 +3,7 @@
         <ul class="nav navbar-nav">
             <!-- Home -->
             <li>
-                <a class="no-sub-menu" href="/home">Home</a>
+                <a class="no-sub-menu" href="/home">Dashboard</a>
             </li>
             <!-- End Home -->
 
