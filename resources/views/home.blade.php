@@ -18,17 +18,12 @@
     <div ng-app="dashboard">
         <h2 class="headline">Dashboard</h2>
         <div class="row" ng-controller="queueCtrl">
-            <div class="col-md-12">
-                <div class="col-md-1 no-padding">
-                    <h4>Filter List</h4>
-                </div>
-                <div class="col-md-4">
-                    <input type="text" class="form-control"  placeholder="Type here..." ng-model="qFilter">
-                </div>
-                <div class="col-md-3">
-                    <h4 class="pull-right">Queue new patient</h4>
-                </div>
-                <div class="col-md-4 no-padding pull-right">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-2">
+                        <p style="font-size: 19px;">Queue new patient</p>
+                    </div>
+                    <div class="col-md-3">
                         <div angucomplete-alt
                              id="qPatient"
                              placeholder="Search patient..."
@@ -41,12 +36,23 @@
                              minlength="2"
                              match-class="highlight">
                         </div>
+                    </div>
+                    <div class="col-md-3">
+                        <p style="font-size: 19px;">Desired date & time</p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-12 padding-top-5">
                 <div class="panel panel-red margin-bottom-40">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-user"></i> Current Queue</h3>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h3 class="panel-title"><i class="fa fa-user"></i> Current Queue</h3>
+                            </div>
+                            <div class="col-md-3 pull-right">
+                                <input type="text" class="form-control"  placeholder="Filter list..." ng-model="qFilter">
+                            </div>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped">
@@ -60,11 +66,14 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <tr ng-cloak="" ng-hide="queue.length > 0">
+                                <td colspan="5" style="text-align: center"><h4>No patients queued!</h4></td>
+                            </tr>
                             <tr ng-cloak="" ng-repeat="q in queue | filter: qFilter">
                                 <td><%$index+1%></td>
                                 <td><%q.firstName%></td>
                                 <td><%q.lastName%></td>
-                                <td><%q.date%></td>
+                                <td><%q.date | date:"MMM d, yyyy"%></td>
                                 <td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Done</button></td>
                             </tr>
                             </tbody>
