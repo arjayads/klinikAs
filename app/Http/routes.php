@@ -44,6 +44,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 
 Route::group(['prefix' => 'patient', 'middleware' => 'auth'], function () {
     Route::get('/', ['uses' => 'PatientController@index']);
+    Route::get('onQueue', ['uses' => 'PatientController@onQueue']);
     Route::get('countFind', ['uses' => 'PatientController@countFind']);
     Route::get('find', ['uses' => 'PatientController@find']);
     Route::get('{id}/detail', ['uses' => 'PatientController@detail']);

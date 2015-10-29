@@ -28,4 +28,11 @@ class PatientRepo
         }
         return $q->count();
     }
+
+    function onQueue() {
+        $q = DB::table('Patient')
+            ->join('PatientQueue', 'Patient.id', '=', 'PatientQueue.FK_patientId')
+            ->select(['Patient.id', 'firstName', 'lastName', 'PatientQueue.createdAt as date']);
+        return $q->get();
+    }
 }

@@ -70,8 +70,8 @@
                                 <td><%$index+1%></td>
                                 <td><%q.firstName%></td>
                                 <td><%q.lastName%></td>
-                                <td><%q.date | date:"MMM d, yyyy"%></td>
-                                <td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Done</button></td>
+                                <td><%dateToMills(q.date) | date:'medium' %></td>
+                                <td><button ng-click="removeFromQ(q.id)" class="btn btn-success btn-xs"><i class="fa fa-check"></i> Done</button></td>
                             </tr>
                             </tbody>
                         </table>

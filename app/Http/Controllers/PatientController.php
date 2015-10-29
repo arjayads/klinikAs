@@ -114,6 +114,7 @@ class PatientController extends Controller
     function queue($id) {
 
         $p = Patient::find($id);
+
         if ($p) {
             $result = PatientQueue::create(['FK_patientId' => $p->id]);
             if($result) {
@@ -124,6 +125,10 @@ class PatientController extends Controller
         } else {
             return ['error' => true, 'message' => 'Invalid data'];
         }
+    }
+
+    function onQueue() {
+        return $this->patientRepo->onQueue();
     }
 }
 
