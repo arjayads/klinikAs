@@ -23,7 +23,7 @@
                     <div class="col-md-2">
                         <p style="font-size: 19px;">Queue new patient</p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div angucomplete-alt
                              id="qPatient"
                              placeholder="Search patient..."
@@ -36,9 +36,6 @@
                              minlength="2"
                              match-class="highlight">
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <p style="font-size: 19px;">Desired date & time</p>
                     </div>
                 </div>
             </div>
