@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use ManageMe\Http\Requests;
 use ManageMe\Models\Patient;
+use ManageMe\Models\PatientQueue;
 use ManageMe\Repositories\PatientRepo;
 
 class PatientController extends Controller
@@ -108,6 +109,21 @@ class PatientController extends Controller
     function countFind() {
         $query = Input::get('q');
         return $this->patientRepo->countFind($query ?: '' );
+    }
+
+    function queue($id) {
+
+        $p = Patient::find($id);
+        if ($p) {
+            $result = PatientQueue::create(['FK_patientId' => $p->id]);
+            if($result) {
+                return ['error' => false, 'message' => 'Patient successfully queued.', 'entityId' => $result->id];
+            } else {
+                return ['error' => true, 'message' => 'Something went wrong.'];
+            }
+        } else {
+            return ['error' => true, 'message' => 'Invalid data'];
+        }
     }
 }
 

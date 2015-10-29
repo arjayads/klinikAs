@@ -54,6 +54,7 @@ Route::group(['prefix' => 'patient', 'middleware' => 'auth'], function () {
 
     Route::post('create', ['uses' => 'PatientController@create']);
     Route::post('update', ['uses' => 'PatientController@update']);
+    Route::post('queue/{id}', ['uses' => 'PatientController@queue']);
 
 });
 
