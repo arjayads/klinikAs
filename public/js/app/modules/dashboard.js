@@ -25,17 +25,29 @@ dashboard.controller('queueCtrl', ['$scope', '$http', function ($scope, $http) {
     };
 
     $scope.removeFromQ = function(qId, index) {
-        $http.post('/patient/queue/'+qId+'/remove').success(function(data) {
+        $scope.qId = qId;
+        $scope.deQIndex = index;
+
+        $('#confirmDoneModal').modal('show');
+    }
+
+    $scope.okDeQ = function() { 
+        $http.post('/patient/queue/'+$scope.qId+'/remove').success(function(data) {
             if (parseInt(data) > 0) {
-                $scope.queue.splice(index, 1);
+                $scope.queue.splice($scope.deQIndex, 1);
+                $('#confirmDoneModal').modal('hide');
             }
         }).error(function(data, a) {
             toastr.error('Something went wrong!');
         });
     }
 
+    $scope.cancelDeQ = function() {
+        $('#confirmDoneModal').modal('hide');
+    }
+
     $scope.cancelResetQ = function() {
-        $('#confirmModal').modal('hide');
+        $('#confirmResetModal').modal('hide');
     }
 
     $scope.okResetQ = function() {
@@ -43,7 +55,7 @@ dashboard.controller('queueCtrl', ['$scope', '$http', function ($scope, $http) {
             if (parseInt(data) > 0) {
                 toastr.success('Queue successfully reset');
                 $scope.queue = [];
-                $('#confirmModal').modal('hide');
+                $('#confirmResetModal').modal('hide');
             }
         }).error(function(data, a) {
             toastr.error('Something went wrong!');
@@ -51,7 +63,7 @@ dashboard.controller('queueCtrl', ['$scope', '$http', function ($scope, $http) {
     }
 
     $scope.resetQ = function() {
-        $('#confirmModal').modal('show');
+        $('#confirmResetModal').modal('show');
     }
 
     var queuePatient = function(patient) {

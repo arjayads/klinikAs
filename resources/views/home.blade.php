@@ -84,7 +84,7 @@
 
 
             <div class="modal fade"
-                 id="confirmModal"
+                 id="confirmResetModal"
                  tabindex="-1" role="dialog"
                  aria-labelledby="myLargeModalLabel"
                  aria-hidden="true">
@@ -104,6 +104,32 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" ng-click="cancelResetQ()">Cancel</button>
                             <button ng-click="okResetQ()" type="button" class="btn btn-success">Okay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade"
+                 id="confirmDoneModal"
+                 tabindex="-1" role="dialog"
+                 aria-labelledby="myLargeModalLabel"
+                 aria-hidden="true">
+
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row text-center">
+                                <h3>You are about to remove patient from queue.<br/>
+                                    Do you want to continue?
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" ng-click="cancelDeQ()">Cancel</button>
+                            <button ng-click="okDeQ()" type="button" class="btn btn-success">Okay</button>
                         </div>
                     </div>
                 </div>
