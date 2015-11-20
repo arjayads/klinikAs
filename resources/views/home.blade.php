@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-primary btn-md pull-right">Reset</button>
+                        <button  ng-click="resetQ()" class="btn btn-primary btn-md pull-right">Reset</button>
                     </div>
                 </div>
             </div>

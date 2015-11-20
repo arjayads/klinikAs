@@ -28,6 +28,17 @@ dashboard.controller('queueCtrl', ['$scope', '$http', function ($scope, $http) {
         console.log(id);
     }
 
+    $scope.resetQ = function() {
+        $http.post('/patient/resetQueue').success(function(data) {
+            if (parseInt(data) > 0) {
+                toastr.success('Queue successfully reset');
+                $scope.queue = [];
+            }
+        }).error(function(data, a) {
+            toastr.error('Something went wrong!');
+        });
+    }
+
     var queuePatient = function(patient) {
         $http.post('/patient/queue/' + patient.id).success(function(data) {
             if (!data.error) {

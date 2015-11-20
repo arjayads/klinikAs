@@ -45,7 +45,6 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 Route::group(['prefix' => 'patient', 'middleware' => 'auth'], function () {
     Route::get('/', ['uses' => 'PatientController@index']);
     Route::get('onQueue', ['uses' => 'PatientController@onQueue']);
-    Route::get('resetQueue', ['uses' => 'PatientController@resetQueue']);
     Route::get('countFind', ['uses' => 'PatientController@countFind']);
     Route::get('find', ['uses' => 'PatientController@find']);
     Route::get('{id}/detail', ['uses' => 'PatientController@detail']);
@@ -57,7 +56,7 @@ Route::group(['prefix' => 'patient', 'middleware' => 'auth'], function () {
     Route::post('create', ['uses' => 'PatientController@create']);
     Route::post('update', ['uses' => 'PatientController@update']);
     Route::post('queue/{id}', ['uses' => 'PatientController@queue']);
-
+    Route::post('resetQueue', ['uses' => 'PatientController@resetQueue']);
 });
 
 
