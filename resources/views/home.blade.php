@@ -37,6 +37,9 @@
                              match-class="highlight">
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-primary btn-md pull-right">Reset</button>
+                    </div>
                 </div>
             </div>
             <div class="col-md-12 padding-top-5">

@@ -130,5 +130,9 @@ class PatientController extends Controller
     function onQueue() {
         return $this->patientRepo->onQueue();
     }
+
+    function resetQueue() {
+        return $this->patientRepo->resetQueue();
+    }
 }
 

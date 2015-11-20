@@ -35,4 +35,8 @@ class PatientRepo
             ->select(['Patient.id', 'firstName', 'lastName', 'PatientQueue.createdAt as date']);
         return $q->get();
     }
+
+    function resetQueue() {
+        return DB::delete('DELETE PatientQueue FROM PatientQueue JOIN Patient ON PatientQueue.FK_patientId = Patient.id');
+    }
 }
