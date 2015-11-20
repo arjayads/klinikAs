@@ -28,15 +28,24 @@ dashboard.controller('queueCtrl', ['$scope', '$http', function ($scope, $http) {
         console.log(id);
     }
 
-    $scope.resetQ = function() {
+    $scope.cancelResetQ = function() {
+        $('#confirmModal').modal('hide');
+    }
+
+    $scope.okResetQ = function() {
         $http.post('/patient/resetQueue').success(function(data) {
             if (parseInt(data) > 0) {
                 toastr.success('Queue successfully reset');
                 $scope.queue = [];
+                $('#confirmModal').modal('hide');
             }
         }).error(function(data, a) {
             toastr.error('Something went wrong!');
         });
+    }
+
+    $scope.resetQ = function() {
+        $('#confirmModal').modal('show');
     }
 
     var queuePatient = function(patient) {

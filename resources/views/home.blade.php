@@ -37,8 +37,8 @@
                              match-class="highlight">
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <button  ng-click="resetQ()" class="btn btn-primary btn-md pull-right">Reset</button>
+                    <div class="col-md-6" ng-hide="queue.length == 0">
+                        <button  ng-click="resetQ()" class="btn-u btn-md pull-right">Reset</button>
                     </div>
                 </div>
             </div>
@@ -81,8 +81,36 @@
                     </div>
                 </div>
             </div>
+
+
+            <div class="modal fade"
+                 id="confirmModal"
+                 tabindex="-1" role="dialog"
+                 aria-labelledby="myLargeModalLabel"
+                 aria-hidden="true">
+
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row text-center">
+                                <h3>You are about to reset patient queue.<br/>
+                                    Do you want to continue?
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" ng-click="cancelResetQ()">Cancel</button>
+                            <button ng-click="okResetQ()" type="button" class="btn btn-success">Okay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
 @stop
 
 
