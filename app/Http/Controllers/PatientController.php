@@ -3,8 +3,8 @@
 namespace ManageMe\Http\Controllers;
 
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
 use ManageMe\Http\Requests;
 use ManageMe\Models\Patient;
 use ManageMe\Models\PatientQueue;
@@ -133,6 +133,10 @@ class PatientController extends Controller
 
     function resetQueue() {
         return $this->patientRepo->resetQueue();
+    }
+
+    function removeFromQueue($qid) {
+        return $this->patientRepo->removeFromQueue($qid);
     }
 }
 

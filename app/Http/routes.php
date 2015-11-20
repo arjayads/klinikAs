@@ -55,6 +55,7 @@ Route::group(['prefix' => 'patient', 'middleware' => 'auth'], function () {
 
     Route::post('create', ['uses' => 'PatientController@create']);
     Route::post('update', ['uses' => 'PatientController@update']);
+    Route::post('queue/{qid}/remove', ['uses' => 'PatientController@removeFromQueue']);
     Route::post('queue/{id}', ['uses' => 'PatientController@queue']);
     Route::post('resetQueue', ['uses' => 'PatientController@resetQueue']);
 });

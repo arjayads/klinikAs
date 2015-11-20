@@ -24,8 +24,14 @@ dashboard.controller('queueCtrl', ['$scope', '$http', function ($scope, $http) {
         }
     };
 
-    $scope.removeFromQ = function(id) {
-        console.log(id);
+    $scope.removeFromQ = function(qId, index) {
+        $http.post('/patient/queue/'+qId+'/remove').success(function(data) {
+            if (parseInt(data) > 0) {
+                $scope.queue.splice(index, 1);
+            }
+        }).error(function(data, a) {
+            toastr.error('Something went wrong!');
+        });
     }
 
     $scope.cancelResetQ = function() {

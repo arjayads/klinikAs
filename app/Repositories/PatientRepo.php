@@ -32,11 +32,15 @@ class PatientRepo
     function onQueue() {
         $q = DB::table('Patient')
             ->join('PatientQueue', 'Patient.id', '=', 'PatientQueue.FK_patientId')
-            ->select(['Patient.id', 'firstName', 'lastName', 'PatientQueue.createdAt as date']);
+            ->select(['PatientQueue.id', 'Patient.id as patientId', 'firstName', 'lastName', 'PatientQueue.createdAt as date']);
         return $q->get();
     }
 
     function resetQueue() {
         return DB::delete('DELETE PatientQueue FROM PatientQueue JOIN Patient ON PatientQueue.FK_patientId = Patient.id');
+    }
+
+    function removeFromQueue($qid) {
+        return DB::delete('DELETE PatientQueue FROM PatientQueue WHERE id=?', [$qid]);
     }
 }
