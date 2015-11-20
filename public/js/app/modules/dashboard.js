@@ -31,7 +31,7 @@ dashboard.controller('queueCtrl', ['$scope', '$http', function ($scope, $http) {
         $('#confirmDoneModal').modal('show');
     }
 
-    $scope.okDeQ = function() { 
+    $scope.okDeQ = function() {
         $http.post('/patient/queue/'+$scope.qId+'/remove').success(function(data) {
             if (parseInt(data) > 0) {
                 $scope.queue.splice($scope.deQIndex, 1);
@@ -70,7 +70,7 @@ dashboard.controller('queueCtrl', ['$scope', '$http', function ($scope, $http) {
         $http.post('/patient/queue/' + patient.id).success(function(data) {
             if (!data.error) {
                 toastr.success(data.message);
-                $scope.queue.push({'id': patient.id, 'firstName': patient.firstName, 'lastName': patient.lastName, 'date': new Date()});
+                $scope.queue.push({'id': data.entityId, 'patientId': patient.id, 'firstName': patient.firstName, 'lastName': patient.lastName, 'date': new Date()});
             } else {
                 toastr.error('Something went wrong!');
             }
