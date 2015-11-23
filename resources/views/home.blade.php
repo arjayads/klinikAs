@@ -62,7 +62,7 @@
                                 <th>First Name</th>
                                 <th class="hidden-sm">Last Name</th>
                                 <th width="20%">Date Set</th>
-                                <th width="10%"></th>
+                                <th width="7%"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -74,7 +74,8 @@
                                 <td><%q.firstName%></td>
                                 <td><%q.lastName%></td>
                                 <td><%dateToMills(q.date) | date:'medium' %></td>
-                                <td><button ng-click="removeFromQ(q.id, $index)" class="btn btn-success btn-xs"><i class="fa fa-check"></i> Done</button></td>
+                                <td><button title="Done" ng-click="removeFromQ(q.id, $index)" class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                    <button title="Enter consultation notes" ng-click="consult(q.patientId)" class="btn btn-success btn-xs"><i class="fa fa-medkit"></i></button></td>
                             </tr>
                             </tbody>
                         </table>

@@ -31,6 +31,12 @@ dashboard.controller('queueCtrl', ['$scope', '$http', function ($scope, $http) {
         $('#confirmDoneModal').modal('show');
     }
 
+    $scope.consult = function(patientId) {
+        var url = '/patient/' + patientId + '/consult';
+        var newTab = window.open(url, '_blank');
+        newTab.focus();
+    }
+
     $scope.okDeQ = function() {
         $http.post('/patient/queue/'+$scope.qId+'/remove').success(function(data) {
             if (parseInt(data) > 0) {

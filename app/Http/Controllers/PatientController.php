@@ -138,5 +138,11 @@ class PatientController extends Controller
     function removeFromQueue($qid) {
         return $this->patientRepo->removeFromQueue($qid);
     }
+
+
+    function consultPage($patientId) {
+        dd($patientId);
+    }
+
 }
 
