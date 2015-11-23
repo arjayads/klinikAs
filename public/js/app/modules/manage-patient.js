@@ -131,7 +131,7 @@ managePatientApp.controller('editCtrl', ['$scope', '$http', function ($scope, $h
     });
 
 
-    $scope.processForm = function() {
+    $scope.processPatientInfo = function() {
         var prevCap =  $scope.caption;
         if ($scope.submitting) return; // prevent multiple submission
         $scope.caption ='Saving...';
